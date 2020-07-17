@@ -1,7 +1,0 @@
-{
-  "name": "musicfinder",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
