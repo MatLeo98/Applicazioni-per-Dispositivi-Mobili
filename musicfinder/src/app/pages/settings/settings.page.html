@@ -1,0 +1,58 @@
+<ion-header>
+  
+  <ion-toolbar>
+ 
+    <ion-title>
+      <h1>Impostazioni</h1>
+    </ion-title>
+ 
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+ 
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>      <!-- Inutile, solo per centrare l'ion-title "Recensioni" -->
+    </ion-buttons>
+ 
+  </ion-toolbar>
+  
+</ion-header>
+ 
+<ion-content fullscreen>
+ 
+  <ion-list lines="none">
+    
+    <ion-item class="listitem" button="page1" >
+      <p>Modifica Profilo</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+    
+    <ion-item class="listitem" button="page2">
+      <p>Sicurezza</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+  
+    <ion-item class="listitem" button="page3">
+      <p>Informative Privacy</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+    
+    <ion-item class="listitem" button="page4">
+      <p>Info Sviluppatori</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+ 
+    <ion-item class="listitem" button="page4">
+      <p>Assistenza</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+ 
+    <ion-item class="listitem" button="page4" (click)="prosesLogout()">
+      <p>Logout</p>
+      <ion-icon name="chevron-forward-outline" slot="end" class="arrow"></ion-icon> 
+    </ion-item>
+  </ion-list>
+ 
+</ion-content>

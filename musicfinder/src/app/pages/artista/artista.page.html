@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-title >
+      <h1>{{ nome }}</h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+
+      <ion-back-button defaultHref="/tabs/favourites"></ion-back-button>
+
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button shape="round" (click)="btnClicked()">
+        <ion-icon id="stariconartist" name="star-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content fullscreen>
+
+  <img src="assets/artists/{{ immart }}.jpg" class="imma"> 
+
+  <ion-title style="margin-top: 0.5em;">
+    Storia
+  </ion-title>
+
+  <ion-card >
+
+    <ion-card-content>
+
+    <p>{{ storia }}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-title style="margin-top: 1em;">
+    Discografia
+  </ion-title>
+
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col *ngFor="let item of items" size="auto">
+
+        <ion-card class="image-container" button="true" routerLink="/tabs/home/results/0/artista/{{id_artista}}/{{nome}}/{{storia}}/{{immart}}/album/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{nome}}">  <img src="./assets/albums/{{ item.immagine }}.jpg" /> </ion-card>
+
+        <p class="ion-text-center">{{ item.titolo }} ({{ item.anno }})</p>
+
+      </ion-col> 
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+
+
+
+<!-- <ion-col *ngFor="let image of [1,2,3]" size="auto">
+
+  <ion-card class="image-container" button="true" [style.background-image]="'url(assets/images/' + image + '.jpg)'"></ion-card>
+
+  <p class="ion-text-center">TITOLO (ANNO)</p> -->

@@ -1,0 +1,519 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/*ion-title {
+  text-align:center;
+}*/
+
+*{
+  --ion-background-color: linear-gradient(110deg, rgba(42,56,211,1) 0%,rgb(5, 2, 37) 60%);
+  --ion-tab-bar-background: rgb(1, 1, 80); 
+  --ion-tab-bar-border-color: rgba(0, 255, 34, 0);
+  --ion-tab-bar-color: white;
+  --ion-tab-bar-color-selected:rgba(22, 56, 253, 1);
+  --ion-toolbar-background: linear-gradient(180deg, rgba(42,56,211,1) 0%,rgba(42, 56, 211, 0) 100%);
+  --ion-toolbar-color: white;
+  --ion-item-background: rgba(255, 255, 255, 0.100);
+  --ripple-color: white;
+}
+
+ion-title,ion-select,p,.arrow{
+ 
+  color: white;
+ 
+} /* cancellare sotto p */
+ 
+a{
+  text-decoration: none;
+} 
+ 
+.newstitle{
+  color: white;
+  font-weight: bold;
+}
+ 
+.newscontent{
+  color: white;
+}
+ 
+ion-header{
+
+      border: none;
+      overflow: hidden;
+      outline:none;
+  
+}
+
+.logo{
+
+  --background: url(assets/images/scrittaMusicFinder.png);
+
+}
+
+.immart{
+
+  --background: url(assets/images/thom.jpg);
+   
+}
+
+/* .topartisti{
+
+  height: 36.8vw;
+  margin: 22px;
+  border-radius: 15px;
+  margin-bottom: 45px;
+  background-size: contain;
+  --background: url(assets/images/TOP50ARTISTI.jpg);
+  margin-bottom: 50px;
+
+} */
+
+.topartisti{
+
+  height: 36.8vw;
+  margin: 22px;
+  border-radius: 15px;
+  margin-bottom: 45px;
+  margin-bottom: 50px;
+
+} 
+
+.topalbum{
+
+  height: 36.8vw;
+  margin: 22px;
+  border-radius: 15px;
+  margin-bottom: 45px;
+
+}
+
+.topbrani{
+
+  height: 36.8vw;
+  margin: 22px;
+  border-radius: 15px;
+  margin-bottom: 45px;
+
+}
+
+
+.card-background-page {
+
+ion-card.artisti{
+    --background: url(assets/concert.jfif);
+    padding: 25%;
+  }
+
+ion-card.album{
+    --background: url(assets/album.jfif);
+    padding: 25%;
+}
+
+
+}
+
+
+.card-profile{
+
+  .m-t {
+    margin-top: 2em;
+  }
+
+
+  ion-avatar {
+
+    height: 40vw;
+    width: 40vw;
+    margin: auto;
+
+  }
+
+  .center{
+
+    text-align: center;
+  }
+
+  .artistbutt{
+
+    width: 7em;
+    height: 7em;
+    border-radius: 100%;
+    background: black;
+  }
+
+  .genrebutt{
+
+    width: 7em;
+    height: 7em;
+    border-radius: 15px;
+
+  }
+
+}
+
+.login{
+
+  ion-avatar {
+
+    height: 80px;
+    width: 70px;
+    margin: auto; //accentra la foto
+    padding-top: 50%;
+
+  }
+
+  .avatar{
+  width: 60px;
+  height: 60px;
+  }
+
+  ion-input {
+    width: 80%;
+  }
+
+  ion-item{
+    width: 100%;
+    
+  }
+
+
+  #login {
+    width: 90%; 
+    height: 30%;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    margin-top: -15%;
+    margin-left: -45%;
+    
+  }
+   #register {
+    width: 90%; 
+    height: 30%;
+    position: absolute;  
+    top: 50%; 
+    left: 50%; 
+    margin-top: -15%;
+    margin-left: -45%;
+    
+  }
+
+
+  .logo {
+    padding-top: 3em;
+    width: 40vw;
+    
+  }
+
+  .pads {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+ 
+  .register-button{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  background: transparent !important;
+  width: 100%;
+  font-size: 10px;
+  
+  }
+
+  
+
+    .imageUploaded {
+
+      width: 40vw;
+      height: 40vw;
+      position: relative;
+      //margin-left: 10%;
+      //margin-top: -25%;
+      z-index: -1;
+      border-radius: 100%;
+      border: 6px solid #F8F8F8;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+     
+      
+    }
+
+
+//UPLOAD IMAGE
+
+  body {
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: 1vh auto;
+    padding: 3vh;
+    margin-bottom: 2vh;
+}
+  
+  .matita {
+    //margin-left:80%;
+    
+    height: 5vh;
+    width: 5vh;
+    content: url(assets/edit-round-w.png);
+  }
+
+  .bott{
+    position: absolute;
+    z-index: 2;
+    margin-top:15%;
+    margin-left:54%;
+    border-radius: 100%;
+
+  }
+
+
+
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 5% auto;
+    
+    .avatar-edit {
+        position: absolute;
+        right: 6vw;
+        z-index: 1;
+        
+        input {
+            display: none;
+            + label {
+                //margin-left:80%;
+                display: inline-block;
+                width: 10vw;
+                height: 10vw;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: #000;
+                //border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                font-weight: normal;
+                
+                content: url(assets/edit-round.png);
+        
+              /* &:after {
+                    
+                    
+                    font-family: 'FontAwesome';
+                    color: #757575;
+                    position: absolute;
+                    top: 30px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin: auto;
+                }*/
+            }
+        }
+    }
+    .avatar-preview {
+        width: 40vw;
+        height: 40vw;
+        margin: auto;
+        position: relative;
+        border-radius: 100%;
+        //border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    
+        > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
+
+//FINE UPLOAD IMAGE
+
+  .login-button {
+    
+    width: 100%;
+    height: 2em;
+    color: #fff;
+    border-radius: 4px;
+    
+  }
+}
+
+
+//----------------------
+
+
+h1{     
+  padding: 0em;
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+  text-align: center;
+  font-size: inherit;
+}
+
+.subtitle{
+  padding: 0em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  font-size: 0.55em;
+}
+
+
+
+ion-card{
+
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 0.1em;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+ion-grid{
+
+  font-size: small;
+  
+}
+
+.playbutt{
+  --background: none;
+}
+
+.playbutticon{
+  text-align: center;
+  font-size: 7vh;
+}
+
+.addbutt{
+  border-style: solid;
+  border-radius: 100%;
+  --background: none;
+  border-width: 0.15em;
+}
+
+.addbutticon{
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.sharesong{
+
+  --border-radius: 100%;
+  --border-style: solid;
+  --border-width: 0.1vh;
+  --border-color: rgba(128, 128, 128, 0.61);
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  right: 1.8em;
+  top: 11em;
+  z-index: 1;
+}
+
+.sharealbum{
+
+  --border-radius: 100%;
+  --border-style: solid;
+  --border-width: 0.1vh;
+  --border-color: rgba(128, 128, 128, 0.61);
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  right: 1.8em;
+  top: 16.5em;
+} 
+
+.shareicon{
+
+  text-align: center;
+  font-size: 4em;
+  color: white;
+}
+
+.listitem{
+
+  border-style: solid;
+  border-color: rgba(128, 128, 128, 0.5);
+  border-width: 0.1px;
+ 
+}
+
+.imagecardsong{
+  
+  padding: 0px;
+  margin-right: 2px;
+  height: 115px;
+  width: 115px;
+  border-radius: 15px;
+}
+
+.imagecardalbum{
+
+  height: 170px;
+  width: 170px;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.listcard{
+
+  border: none;
+  border-style: none;
+  
+}
+
+.starcolor{
+  color: yellow;
+}
+
+
+  
+
+  /* 
+  --ion-item-color: lightblue;
+  --ion-item-border-color: grey;
+  --ion-border-color:     green;
+  --ion-toolbar-segment-color: orange;
+  --ion-toolbar-segment-color-checked: red;
+  --ion-toolbar-segment-background: red;
+  --ion-toolbar-segment-background-checked: red;
+  --ion-toolbar-segment-indicator-color: red;
+  --ion-toolbar-border-color: purple;
+  --ion-placeholder-color: white; 
+  --ion-overlay-background-color: green; */
+
+
+
+
+

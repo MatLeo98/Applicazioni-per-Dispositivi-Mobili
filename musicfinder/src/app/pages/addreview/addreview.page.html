@@ -1,0 +1,45 @@
+<ion-header>
+  
+  <ion-toolbar>
+
+    <ion-title>
+      <h1>Scrivi Recensione</h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>      <!-- Inutile, solo per centrare l'ion-title "Recensioni" -->
+    </ion-buttons>
+
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content fullscreen>
+
+	<ion-item>
+		<ion-label position="floating"> Titolo </ion-label>
+		<ion-input type="text" [(ngModel)]="titolo"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+		<ion-label position="floating"> Valutazione (MAX 5)</ion-label>
+		<ion-input type="text" [(ngModel)]="valutazione"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label position="floating"> Testo </ion-label>
+		<ion-textarea [(ngModel)]="testo"></ion-textarea>
+	</ion-item>
+
+  <ion-button expand="block" padding color="tertiary" *ngIf="id != undefined" (click)="createdProses()" fill="outline">Submit</ion-button>
+  <ion-button expand="block" padding color="tertiary" *ngIf="id_brano != undefined" (click)="createReviewBrano()" fill="outline">Submit</ion-button>
+
+<!--	<ion-button expand="block" padding color="tertiary" *ngIf="id>=1" (click)="updateProses()" fill="outline">Update</ion-button>-->
+
+</ion-content>

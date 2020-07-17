@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      <h1>Risultati </h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>      <!-- Inutile, solo per centrare l'ion-title "Recensioni" -->
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+ <!--- <ion-item lines="none" class="top">
+
+    <ion-searchbar placeholder="Cerca la tua musica" (keydown.enter)="onKeyPress($event.target.value)"> </ion-searchbar>
+ 
+      
+       <ion-select  okText="Ok" cancelText="Annulla" [(ngModel)]="filter">
+         <ion-select-option value="Artisti">Artisti</ion-select-option>
+         <ion-select-option value="Album">Album</ion-select-option>
+         <ion-select-option value="Brani">Brani</ion-select-option>
+       </ion-select>
+   
+     
+   </ion-item>-->
+
+  <!-- ARTISTI -->
+ 
+<ion-list lines="none" *ngIf="x == 0">
+ 
+  <ion-item class="listitem" button="true" routerLink="/tabs/home/results/{{x}}/artista/{{item.id_artista}}/{{item.nome}}/{{item.storia}}/{{item.immart}}" *ngFor="let item of items">
+ 
+    <ion-avatar slot="start">
+      <img src="assets/images/personicon.jpg">
+    </ion-avatar>
+    
+    <p> {{ item.nome }}</p>
+ 
+  </ion-item>
+ 
+</ion-list>
+  
+  <!-- ALBUM -->
+ 
+  <ion-list lines="none" *ngIf="x == 1"> 
+ 
+    <ion-item class="listitem" button="true" routerLink="/tabs/home/results/{{x}}/album/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.nome}}"  *ngFor="let item of items" >
+ 
+      <ion-avatar slot="start">
+        <img src="assets/images/albumicon.png">
+      </ion-avatar>
+ 
+      <ion-label>
+      <p class="scritta">{{ item.nome }} </p> 
+      <p> {{ item.titolo }}</p>
+    </ion-label>
+ 
+    </ion-item>
+  
+ 
+  </ion-list>
+ 
+  <!-- BRANI -->
+ 
+  <ion-list lines="none" *ngIf="x == 2">
+ 
+    <ion-item class="listitem" button="true" routerLink="/tabs/home/results/{{ x }}/song/{{item.id_brano}}/{{item.id_album}}/{{item.titolo}}/{{item.durata}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.testo}}/{{item.youtube}}/{{item.genere}}/{{item.titalb}}/{{item.nome}}/{{item.immagine}}" *ngFor="let item of items">
+ 
+      <ion-avatar slot="start">
+        <img src="assets/images/songicon.png">
+      </ion-avatar>
+  
+      <ion-label>
+        <p class="scritta">{{ item.nome }} </p> 
+      <p> {{ item.titolo }}</p>
+      </ion-label>
+ 
+    </ion-item>
+ 
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+</ion-content>

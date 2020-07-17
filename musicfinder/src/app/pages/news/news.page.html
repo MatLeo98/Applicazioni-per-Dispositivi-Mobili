@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+ 
+    <ion-title>
+      <h1>News</h1>
+    </ion-title>
+ 
+    <ion-buttons slot="start">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+ 
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+ 
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content fullscreen >
+ 
+  <ion-card href="https://tinyurl.com/{{ item.link }}" *ngFor="let item of items">
+    <img  src="assets/news/{{ item.immnews }}.jpg">
+    <ion-card-header>
+      <ion-card-title class="newstitle" >
+        {{item.titolo}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content  class="newscontent">
+      {{ item.descrizione }}
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

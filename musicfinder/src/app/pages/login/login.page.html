@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      <h1>Accedi</h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>      <!-- Inutile, solo per centrare l'ion-title "Recensioni" -->
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen padding center text-center class="login">
+  <center><img class="logo" src="assets/LogoMF.png"></center>
+<div id="login">
+ 
+ <center>
+<ion-item class="pads">
+  <ion-input name ="username" placeholder="Username" [(ngModel)]="username"></ion-input>
+</ion-item>
+<ion-item class="pads">
+  <ion-input name="password" placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+</ion-item>
+</center>
+
+<ion-button  class="register-button" (click)="formRegister()" fill="clear"> Non sei registrato? Registrati </ion-button>
+<ion-button fill="outline" class="login-button" (click)="prosesLogin()"> LOGIN </ion-button>
+</div>
+</ion-content>

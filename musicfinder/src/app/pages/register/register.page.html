@@ -1,0 +1,135 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Form Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+
+	  <ion-item>
+	    <ion-label position="floating">Username</ion-label>
+	    <ion-input type="text" [(ngModel)]="username"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label position="floating">Password</ion-label>
+	    <ion-input type="password" [(ngModel)]="password"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label position="floating">Confirm Password</ion-label>
+	    <ion-input type="password" [(ngModel)]="confirm_password"></ion-input>
+	  </ion-item>
+
+	</ion-list>
+
+	<div>
+	  <ion-button expand="block" padding color="tertiary" (click)="prosesRegister()">Register</ion-button>
+	  <ion-button expand="block" padding color="tertiary" fill="outline" (click)="formLogin()">Sign In</ion-button>
+	</div>
+</ion-content>-->
+
+
+
+<ion-header>
+	<ion-toolbar>
+  
+	  <ion-title>
+		<h1>Iscriviti</h1>
+	  </ion-title>
+  
+	  <ion-buttons slot="start">
+		<ion-back-button defaultHref=""></ion-back-button>
+	  </ion-buttons>
+  
+	  <ion-buttons slot="end">
+		<ion-button disabled="true">
+		  <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+		</ion-button>      <!-- Inutile, solo per centrare l'ion-title "Recensioni" -->
+	  </ion-buttons>
+  
+	</ion-toolbar>
+  </ion-header>
+  
+  <ion-content fullscreen text-center class="login">
+   <!-- <img class="logo" src="assets/LogoMF.png">-->
+   
+  <!--<ion-fab vertical="top" horizontal="end">-->
+  
+	<ion-button shape="round" fill="clear" class="bott">
+	  <!-- <ion-icon name="pencil-sharp"></ion-icon> -->
+	  
+	  <label class="matita" for="imageUpload"></label>
+	</ion-button>
+  
+  <!--</ion-fab>-->
+  
+  <input style="display:none;" [(ngModel)]="img"  type="file" id="imageUpload" value="A" (change)="fileChange($event)" accept=".png, .jpg, .jpeg">
+  
+  
+	<div class="container">
+	  
+	  <div class="avatar-upload">
+		
+		  <div class="avatar-edit">
+			
+			<!-- <input type="file" id="imageUpload" value="" (change)="fileChange($event)" accept=".png, .jpg, .jpeg">
+			<label  for="imageUpload"></label> -->
+			<img class="imageUploaded" *ngIf="img1" [src]="img1"/>
+			
+			
+			  <!--<input type='file' id="imageUpload" (click)="data()" accept=".png, .jpg, .jpeg" />-->
+			  
+			
+			  <!--<ion-icon name="pencil-sharp"></ion-icon>-->
+			</div>
+		   
+		   
+		  
+			
+  
+  
+			<div class="avatar-preview" >
+			  <div id="imagePreview"   *ngIf="isVisible" style="background-image: url(assets/profile2.jpg);"></div>
+		  </div>
+		  
+	  </div>
+  </div>
+  
+  
+	<!--<ion-item>
+	  <ion-input class="inputimage" type="file" [id]="pic"></ion-input>
+	</ion-item>-->
+   
+   <!--<ion-item class="pads">
+	  <ion-input placeholder="Nome" name="nome" [(ngModel)]="postData.nome"></ion-input>
+	</ion-item>-->
+	<div id="register">
+	  <ion-item class="pads">
+		<ion-input placeholder="Email" name="email" [(ngModel)]="email"></ion-input>
+	  </ion-item>
+  <ion-item class="pads">
+	<ion-input placeholder="Username" name="username" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <ion-item class="pads">
+	<ion-input placeholder="Password" type="password" name="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item class="pads">
+	<ion-input placeholder="Conferma password" name="confirm_password" type="password" [(ngModel)]="confirm_password"></ion-input>
+  </ion-item>
+  <!--<ion-item class="pads">
+	<ion-input placeholder="Conferma Password"></ion-input>
+  </ion-item>-->
+   
+  <ion-button  class="register-button" href="/tabs/login" fill="clear"> Sei già registrato? Login </ion-button>
+  
+  <ion-button class="login-button" fill="outline" (click)="prosesRegister()"> REGISTRATI </ion-button>
+  </div>
+  </ion-content>
+  
+  
+  
+  
+  
+  

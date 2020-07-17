@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar class="padd">
+    <ion-img src="assets/images/scrittaMusicFinder.png"></ion-img>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  
+
+  <ion-item lines="none" class="top">
+
+   <ion-searchbar placeholder="Cerca la tua musica" (keydown.enter)="onKeyPress($event.target.value)"> </ion-searchbar>
+
+     
+     <!---<ion-select  okText="Ok" cancelText="Annulla" [(ngModel)]="filter">
+        <ion-select-option value="Artisti">Artisti</ion-select-option>
+        <ion-select-option value="Album">Album</ion-select-option>
+        <ion-select-option value="Brani">Brani</ion-select-option>
+      </ion-select>-->
+
+      <ion-select okText="Ok" cancelText="Annulla" class="filtro" selectedText="▼" [(ngModel)]="filter">
+        <ion-select-option value="Artisti">Artisti</ion-select-option>
+        <ion-select-option value="Album">Album</ion-select-option>
+        <ion-select-option value="Brani">Brani</ion-select-option>
+      </ion-select>
+  
+    
+  </ion-item>
+
+  
+  <ion-card button="true" (click)="Artista()" class="topartisti">
+    <img src="./assets/images/TOP50ARTISTI.jpg" />
+  </ion-card>
+
+  <ion-card button="true" (click)="Album()" class="topalbum">
+    <img src="./assets/images/TOP50ALBUM.jpg" />
+  </ion-card>
+
+  <ion-card button="true" (click)="Brano()" class="topbrani">
+    <img src="./assets/images/TOP50BRANI.jpg" />
+  </ion-card>
+
+</ion-content>

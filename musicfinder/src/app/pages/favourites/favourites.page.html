@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      <h1>Preferiti</h1>
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button disabled="true">
+        <ion-icon name="add-outline" size="large" slot="icon-only" style="color: rgba(42, 56, 211, 0);"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+
+
+  <ion-grid>
+
+    <ion-row>
+
+      <ion-col>
+        <ion-select style="font-size: 2em; text-align: center;" id="1" class="prova" value="Artista" okText="Ok" cancelText="Annulla">
+
+          <ion-select-option value="Artista">Artisti</ion-select-option>
+          <ion-select-option value="Album">Album</ion-select-option>
+          <ion-select-option value="Brano">Brani</ion-select-option>
+
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="auto">
+        <ion-button expand="block" class="mostra" shape="round" fill="outline" class="mostra" (click)="filtro()">Mostra</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+  <!--
+  <ion-item lines="none">
+
+    <ion-select id="1" class="prova" value="Artista" okText="Ok" cancelText="Annulla">
+      <ion-select-option value="Artista">Artisti</ion-select-option>
+      <ion-select-option value="Album">Album</ion-select-option>
+      <ion-select-option value="Brano">Brani</ion-select-option>
+    </ion-select>
+    
+  </ion-item>
+
+  <ion-button expand="full" class="mostra" (click)="filtro()">Mostra</ion-button>
+
+-->
+    <!-- HTML 
+      
+    <label>Choose an ice cream flavor:
+  <select class="ice-cream" name="ice-cream">
+    <option value="">Select One …</option>
+    <option value="chocolate">Chocolate</option>
+    <option value="sardine">Sardine</option>
+    <option value="vanilla">Vanilla</option>
+  </select>
+</label>
+
+<div class="result"></div> -->
+
+<!-- JAVASCRIPT 
+  
+const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', (event) => {
+  const result = document.querySelector('.result');
+  result.textContent = `You like ${event.target.value}`;
+}); -->
+
+<ion-list *ngIf="filt == 0" lines="none">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites">
+
+    <ion-avatar slot="start">
+      <img src="assets/images/personicon.jpg">
+    </ion-avatar>
+
+  
+    <ion-label for="but">
+
+     <!-- <p class="scritta">{{ elem.artist }} </p>-->
+      <h3> {{ favourite.nome }} </h3>
+  
+    </ion-label>
+
+    <ion-button fill="clear" shape="round" (click)="delArtistapref(favourite.id_artista)"> <ion-icon class="staricon" name="star" slot="icon-only"></ion-icon> </ion-button>
+
+
+  </ion-item>
+</ion-list>
+<ion-list  lines="none" *ngIf="filt == 1">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" (click)="showcustomer()">
+
+    <ion-avatar slot="start">
+      <img src="assets/images/albumicon.png">
+    </ion-avatar>
+
+  
+    <ion-label for="but">
+
+      <h3> {{ favourite.titolo }} </h3>
+      <p class="scritta">{{ favourite.nome }} </p>
+      
+  
+    </ion-label>
+
+    <ion-button fill="clear" shape="round" (click)="delAlbumpref(favourite.id_album)"> <ion-icon class="staricon" name="star" slot="icon-only"></ion-icon> </ion-button>
+
+
+  </ion-item>
+</ion-list>
+<ion-list *ngIf="filt == 2" lines="none">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites">
+
+    <ion-avatar slot="start">
+      <img src="assets/images/songicon.png">
+    </ion-avatar>
+
+  
+    <ion-label for="but">
+
+      
+      <h3> {{ favourite.titolo }} </h3>
+      <p class="scritta">{{ favourite.nome }} </p>
+  
+    </ion-label>
+
+    <ion-button fill="clear" shape="round" (click)="delBranopref(favourite.id_brano)"> <ion-icon class="staricon" name="star" slot="icon-only"></ion-icon> </ion-button>
+
+
+  </ion-item>
+</ion-list>
+</ion-content>

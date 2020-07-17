@@ -1,0 +1,49 @@
+ion-searchbar{
+
+    --background: white;
+    --color:  black;
+    --icon-color: #222D80;
+
+}
+
+ion-item{
+    
+    --background:  none;
+
+}
+
+ion-select::part(icon) {
+    display: none !important;
+}
+
+.filtro{
+
+    color: white;
+    height:42px;
+    width:60px;
+    border: none;
+    overflow: hidden;
+    outline:none;
+
+}
+
+.fil{
+
+    color: white;
+    height:42px;
+    width:60px;
+
+}
+
+.padd{
+
+padding-top: 10px;
+padding-bottom: 10px;
+
+}
+
+.top{
+
+margin-top: 0.5em;
+
+}
