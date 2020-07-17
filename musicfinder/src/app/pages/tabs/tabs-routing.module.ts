@@ -115,9 +115,9 @@ const routes: Routes = [
  
             ]
  
-          } /*,
+          },
           {
-            path: 'results/:event/:filter', //SEARCH
+            path: 'results/search/:event/:filter', //SEARCH
             children: [
               {
                 path: '',
@@ -147,7 +147,7 @@ const routes: Routes = [
  
             ]
  
-          }*/
+          }
  
         ]
  

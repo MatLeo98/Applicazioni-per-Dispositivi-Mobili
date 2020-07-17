@@ -369,17 +369,20 @@ elseif($postjson['aksi']=='getBranoPref'){
 
   elseif($postjson['aksi']=='searchalbum'){
   	$data = array();
-    $query = mysqli_query($mysqli, "SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
+    $query = mysqli_query($mysqli, "SELECT * FROM album JOIN artista ON album.id_artista = artista.id_artista WHERE titolo LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
     
   	while($row = mysqli_fetch_array($query)){
 
   		$data[] = array(
-  			'id_album' => $row['id_album'],
-  			'titolo' => $row['titolo'],
-  			'genere' => $row['genere'],
-        'valutazione_media' => $row['valutazione_media'],
-        'descrizione' => $row['descrizione'],
-        'id_artista' => $row['id_artista'],
+			'id_album' => $row['id_album'],
+			'id_artista' => $row['id_artista'],
+			'titolo' => $row['titolo'],
+			'anno' => $row['anno'],
+			'genere' => $row['genere'],
+			'immagine' => $row['immagine'],
+			'valutazione_media' => $row['valutazione_media'],
+			'descrizione' => $row['descrizione'],
+			'nome' => $row['nome'],
 
       );
       
@@ -395,19 +398,25 @@ elseif($postjson['aksi']=='getBranoPref'){
 
   elseif($postjson['aksi']=='searchbrani'){
   	$data = array();
-    $query = mysqli_query($mysqli, "SELECT * FROM brano WHERE titolo LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
+    $query = mysqli_query($mysqli, "SELECT  brano.id_brano, brano.id_album, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, brano.youtube,
+    album.id_album, album.id_artista, album.titolo AS titalb, album.genere, album.immagine, artista.nome
+    FROM brano JOIN album ON brano.id_album = album.id_album JOIN artista ON artista.id_artista = album.id_artista WHERE brano.titolo LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
     
   	while($row = mysqli_fetch_array($query)){
 
   		$data[] = array(
-  			'id_brano' => $row['id_brano'],
-  			'id_album' => $row['id_album'],
-  			'titolo' => $row['titolo'],
-        'durata' => $row['durata'],
-        'valutazione_media' => $row['valutazione_media'],
-        'descrizione' => $row['descrizione'],
-        'testo' => $row['testo'],
-
+			'id_brano' => $row['id_brano'],
+			'id_album' => $row['id_album'],
+			'titolo' => $row['titolo'],
+			'durata' => $row['durata'],
+			'valutazione_media' => $row['valutazione_media'],
+			'descrizione' => $row['descrizione'],
+			'testo' => $row['testo'],
+			'youtube' => $row['youtube'],
+			'genere' => $row['genere'],
+			'titalb' => $row['titalb'],
+			 'nome' => $row['nome'],
+			 'immagine' => $row['immagine'],
       );
       
       

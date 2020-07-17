@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostProvider {
-	server: string = "http://localhost/database/server_api/"; // default
+	server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/"; // default
 	// if you test in real device "http://localhost" change use the your IP	
     // server: string = "http://192.199.122.100/IONIC4_CRUD_LOGINREGIS_PHP_MYSQL/server_api/"; 
 

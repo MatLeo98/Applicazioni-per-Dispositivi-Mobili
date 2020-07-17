@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
     filter = this.filter;
     console.log(filter);
     console.log(event);
-    this.router.navigate(['/tabs/results/search/' + event + '/' + filter]);
+    this.router.navigate(['/tabs/home/results/search/' + event + '/' + filter]);
   }
 
  /* albums(){
