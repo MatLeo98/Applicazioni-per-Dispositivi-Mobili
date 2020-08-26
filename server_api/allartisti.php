@@ -18,7 +18,7 @@ if($postjson['aksi']=='getartista'){
 	while($row = mysqli_fetch_array($query)){
 
 		$data[] = array(
-	    'id_artista' => $row['id_artista'],
+			'id_artista' => $row['id_artista'],
 	  'nome' => $row['nome'],
 	  'storia' => $row['storia'],
 	  'immart' => $row['immart'],
@@ -28,23 +28,6 @@ if($postjson['aksi']=='getartista'){
 	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
 	else $result = json_encode(array('success'=>false));
 
-    echo $result;
-    
-   /* $data = array();
-   
-        
-        $sql= $conn->query("SELECT * FROM artista;");
-        if($sql){
-            while ($d = $sql->fetch_assoc()){
-                $data[]=$d;
-            }
-            http_response_code(201);
+	echo $result;
 
-        }
-        else{
-            http_response_code(500);
-        }
-
-        exit (json_encode(array('success'=>true, 'result'=>$data)));*/
-
-    }
+}

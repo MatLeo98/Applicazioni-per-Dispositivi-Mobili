@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
+import { ArtistaService } from 'src/app/services/artista.service';
 
 @Component({
   selector: 'app-results',
@@ -27,7 +28,9 @@ export class ResultsPage implements OnInit {
   	private postPvdr: PostProvider,
     private storage: Storage,
     public toastCtrl: ToastController,
-    private actRoute: ActivatedRoute) {
+    private actRoute: ActivatedRoute,
+    private service: ArtistaService
+    ) {
 
     //this.initializeItems();
 
@@ -69,6 +72,10 @@ export class ResultsPage implements OnInit {
   }*/
 
   ngOnInit() {
+
+    /*this.service.getAllArtisti().subscribe(response => {
+      console.log(response);
+    })*/
     this.actRoute.params.subscribe((data: any) =>{
       this.event = data.event;
       this.filter = data.filter;
@@ -90,7 +97,7 @@ export class ResultsPage implements OnInit {
       else { if(this.x == 1){
           this.loadAlbums();}
         else  { if(this.x == 0)
-        this.loadArtisti();
+          this.loadArtisti();
       }
       
     }
@@ -134,7 +141,7 @@ export class ResultsPage implements OnInit {
   	}, 500);
   }
 
-  delCustomer(id){
+  /*delCustomer(id){
 
   	let body = {
   			aksi : 'delete',
@@ -145,7 +152,7 @@ export class ResultsPage implements OnInit {
   			this.ionViewWillEnter();
   		});
 
-  }
+  }*/
 
   loadAlbums(){
     console.log(this.start);
@@ -228,6 +235,8 @@ export class ResultsPage implements OnInit {
     this.router.navigate(['/tabs/artista/' + id_artista + '/' + nome  + '/' + storia + '/' + immart]);
   }
   
+  //SERVICE FUNZIONANTE 
+  
   loadArtisti(){
     return new Promise(resolve => {
       let body = {
@@ -235,8 +244,12 @@ export class ResultsPage implements OnInit {
         limit : this.limit,
         start : this.start,
       };
+
+    /*this.service.getAllArtisti().subscribe(response => {
+      console.log(response);
+    })*/
   
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+      this.service.getArtisti(body, 'allartisti.php').subscribe(data => {
         for(let artista of data.result){
           this.items.push(artista);
         }

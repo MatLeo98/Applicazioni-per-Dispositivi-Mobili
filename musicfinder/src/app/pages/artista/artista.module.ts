@@ -13,7 +13,7 @@ import { ArtistaPage } from './artista.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ArtistaPageRoutingModule
+    ArtistaPageRoutingModule, 
   ],
   declarations: [ArtistaPage]
 })

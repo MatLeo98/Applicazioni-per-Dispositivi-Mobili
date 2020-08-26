@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
-import {Artista} from "../model/artista.model";
+
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+import {Artista} from '../model/artista.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistaService {
 
-  private url = `http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/musicfinder_server/api/artista`;
-  constructor(private http: HttpClient,
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
 
-  ) { }
+  constructor(private httpclient: HttpClient, public http : Http) { }
 
-  getAllArtisti(){
-    return this.http.get<[Artista]>(this.url + '/allartisti.php')
-  }
-
-
+  
+    getArtisti(body, file){
+      let type = "application/json; charset=UTF-8";
+      let headers = new Headers({ 'Content-Type': type });
+      let options = new RequestOptions({ headers: headers });
+  
+      return this.http.post(this.server + file, JSON.stringify(body), options)
+      .map(res => res.json());
+     // return this.httpclient.get<[Artista]>(this.server + file);
+    }
+  
 }

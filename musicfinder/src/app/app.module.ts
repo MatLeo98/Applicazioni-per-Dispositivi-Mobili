@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/Storage';
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,7 +24,10 @@ import { PostProvider } from '../providers/post-provider';
     IonicStorageModule.forRoot(), 
     BrowserModule, 
     IonicModule.forRoot(), 
-    AppRoutingModule],
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule],
+    
   providers: [
     StatusBar,
     SplashScreen,
