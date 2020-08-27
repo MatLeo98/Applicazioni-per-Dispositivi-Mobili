@@ -4,6 +4,8 @@ import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { ArtistaService } from 'src/app/services/artista.service';
+import { AlbumService } from 'src/app/services/album.service';
+import { SongService } from 'src/app/services/song.service';
 import {Artista} from '../../model/artista.model';
 
 @Component({
@@ -31,7 +33,9 @@ export class ResultsPage implements OnInit {
     private storage: Storage,
     public toastCtrl: ToastController,
     private actRoute: ActivatedRoute,
-    private service: ArtistaService
+    private serviceArtista: ArtistaService,
+    private serviceAlbum: AlbumService,
+    private serviceSong: SongService,
     ) {
 
     //this.initializeItems();
@@ -134,14 +138,14 @@ export class ResultsPage implements OnInit {
   	}, 500);
   }
 
-  loadData(event:any){
+ /* loadData(event:any){
   	this.start += this.limit;
   	setTimeout(() =>{
   	this.loadAlbums().then(()=>{
   		event.target.complete();
   	});
   	}, 500);
-  }
+  }*/
 
   /*delCustomer(id){
 
@@ -157,7 +161,7 @@ export class ResultsPage implements OnInit {
   }*/
 
   loadAlbums(){
-    console.log(this.start);
+    /*console.log(this.start);
   	return new Promise(resolve => {
   		let body = {
   			aksi : 'getalbum',
@@ -171,7 +175,11 @@ export class ResultsPage implements OnInit {
   			}
   			resolve(true);
   		});
-  	});
+    });*/
+    
+    this.serviceAlbum.getAlbum('allalbum.php').subscribe(response => {
+      this.items = response;
+    });
   }
 
 
@@ -180,18 +188,20 @@ export class ResultsPage implements OnInit {
   	return new Promise(resolve => {
     
   		let body = {
-  			aksi : 'searchalbum',
+  			//aksi : 'searchalbum',
         event : this.event,
       };
       
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceAlbum.searchAlbum(body, 'allalbum.php').subscribe(data => {
   			for(let customer of data.result){
   				this.items.push(customer);
   			}
   			resolve(true);
   		});
-  	});
+    });
+    
+
   }
 
   searchArtisti(){
@@ -199,15 +209,16 @@ export class ResultsPage implements OnInit {
   	return new Promise(resolve => {
     
   		let body = {
-  			aksi : 'searchartisti',
+  			//aksi : 'searchartisti',
         event : this.event,
       };
       
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceArtista.searchArtisti(body, 'allartisti.php').subscribe(data => {
   			for(let customer of data.result){
   				this.items.push(customer);
-  			}
+        }
+        
   			resolve(true);
   		});
   	});
@@ -218,12 +229,12 @@ export class ResultsPage implements OnInit {
   	return new Promise(resolve => {
     
   		let body = {
-  			aksi : 'searchbrani',
+  			//aksi : 'searchbrani',
         event : this.event,
       };
       
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceSong.searchBrani(body, 'allbrani.php').subscribe(data => {
   			for(let customer of data.result){
   				this.items.push(customer);
   			}
@@ -251,7 +262,7 @@ export class ResultsPage implements OnInit {
       console.log(response);
     })*/
 
-    this.service.getArtisti('allartisti.php').subscribe(response => {
+    this.serviceArtista.getArtisti('allartisti.php').subscribe(response => {
       this.items = response;
     });
   
@@ -269,7 +280,7 @@ export class ResultsPage implements OnInit {
   }
   
     loadBrani(){
-      return new Promise(resolve => {
+      /*return new Promise(resolve => {
         let body = {
           aksi : 'getbrano',
           limit : this.limit,
@@ -282,7 +293,12 @@ export class ResultsPage implements OnInit {
           }
           resolve(true);
         });
+      });*/
+
+      this.serviceSong.getBrani('allbrani.php').subscribe(response => {
+        this.items = response;
       });
+
     }
 
     

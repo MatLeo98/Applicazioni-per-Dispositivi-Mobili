@@ -28,6 +28,8 @@ export class AlbumPage implements OnInit {
   dati: any = [];
   val_media: number;
   media: number;
+
+  check: number = 0;
  // i: number;
   
 
@@ -97,7 +99,10 @@ export class AlbumPage implements OnInit {
 
       this.getpref();
       this.val_media = 0;
-      this.loadReview();
+      if(this.check==0){
+        this.loadReview();
+        this.check++;
+      }else{this.Val_media();}
 
     });
 
@@ -216,12 +221,14 @@ export class AlbumPage implements OnInit {
   }
 
   Val_media(){
-     console.log(this.val_media);
+     
     for(let dato of this.dati){
       console.log(dato.valutazione, this.val_media);
       this.val_media =  +dato.valutazione + +this.val_media;
     }
-    this.val_media = this.val_media / this.dati.length;
+    
+    if(this.val_media != 0)
+      this.val_media = this.val_media / this.dati.length;
     
     console.log(this.val_media);
   }

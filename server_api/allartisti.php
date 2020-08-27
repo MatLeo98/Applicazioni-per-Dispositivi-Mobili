@@ -59,5 +59,30 @@ header('Access-Control-Allow-Origin: *');
         }
 
         exit (json_encode($data));
-      }
+	  }
 
+	  
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	  
+	  $data = array();
+	  $query = mysqli_query($mysqli, "SELECT * FROM artista WHERE nome LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
+	  
+		while($row = mysqli_fetch_array($query)){
+  
+			$data[] = array(
+				'id_artista' => $row['id_artista'],
+				'nome' => $row['nome'],
+				'immart' => $row['immart'],
+			  'storia' => $row['storia'],
+  
+		);
+		
+		
+		}
+  
+		if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+		else $result = json_encode(array('success'=>false));
+  
+		echo $result;
+  
+	}

@@ -33,6 +33,8 @@ export class SongPage implements OnInit {
 
   dati: any = [];
   val_media: number;
+
+  check: number = 0;
   
 
   constructor(private router: Router, private postPvdr: PostProvider,
@@ -68,7 +70,10 @@ export class SongPage implements OnInit {
 
       this.getpref();
       this.val_media = 0;
-      this.loadReview();
+      if(this.check==0){
+        this.loadReview();
+        this.check++;
+      }else{this.Val_media();}
     });
 
   }
@@ -191,7 +196,8 @@ export class SongPage implements OnInit {
        console.log(dato.valutazione, this.val_media);
        this.val_media =  +dato.valutazione + +this.val_media;
      }
-     this.val_media = this.val_media / this.dati.length;
+     if(this.val_media != 0)
+      this.val_media = this.val_media / this.dati.length;
      
      console.log(this.val_media);
    }
