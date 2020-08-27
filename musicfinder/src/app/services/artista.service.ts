@@ -16,14 +16,14 @@ export class ArtistaService {
   constructor(private httpclient: HttpClient, public http : Http) { }
 
   
-    getArtisti(body, file){
+    getArtisti(file){
       let type = "application/json; charset=UTF-8";
       let headers = new Headers({ 'Content-Type': type });
       let options = new RequestOptions({ headers: headers });
   
-      return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());
-     // return this.httpclient.get<[Artista]>(this.server + file);
+      /*return this.http.post(this.server + file, JSON.stringify(body), options)
+      .map(res => res.json());*/
+     return this.httpclient.get<[Artista]>(this.server + file);
     }
   
 }

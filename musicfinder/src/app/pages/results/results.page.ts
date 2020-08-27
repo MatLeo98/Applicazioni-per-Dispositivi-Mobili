@@ -4,6 +4,7 @@ import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { ArtistaService } from 'src/app/services/artista.service';
+import {Artista} from '../../model/artista.model';
 
 @Component({
   selector: 'app-results',
@@ -22,6 +23,7 @@ export class ResultsPage implements OnInit {
   start: number = 0;
   event: string = "";
   filter: string = "";
+  
 
   constructor(
     private router: Router,
@@ -238,24 +240,28 @@ export class ResultsPage implements OnInit {
   //SERVICE FUNZIONANTE 
   
   loadArtisti(){
-    return new Promise(resolve => {
+    /*return new Promise(resolve => {
       let body = {
         aksi : 'getartista',
         limit : this.limit,
         start : this.start,
-      };
+      };*/
 
     /*this.service.getAllArtisti().subscribe(response => {
       console.log(response);
     })*/
+
+    this.service.getArtisti('allartisti.php').subscribe(response => {
+      this.items = response;
+    });
   
-      this.service.getArtisti(body, 'allartisti.php').subscribe(data => {
+      /*this.service.getArtisti(body, 'allartisti.php').subscribe(data => {
         for(let artista of data.result){
           this.items.push(artista);
         }
         resolve(true);
-      });
-    });
+      });*/
+    //});
   }
 
   showBrano(id_brano, id_album, titolo, durata, valutazione_media, descrizione, testo, youtube, genere, titalb, nome, immagine){
