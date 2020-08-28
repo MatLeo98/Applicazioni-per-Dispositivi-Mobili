@@ -3,6 +3,8 @@ import { ToastController } from '@ionic/angular';
 import { PostProvider } from '../../../providers/post-provider';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/Storage';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-register',
@@ -24,7 +26,8 @@ export class RegisterPage implements OnInit {
   	private router: Router,
   	private postPvdr: PostProvider,
   	private storage: Storage,
-  	public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private serviceUser: UserService
   ) { }
 
   ngOnInit() {
@@ -87,7 +90,7 @@ export class RegisterPage implements OnInit {
       aksi: 'register'
       };
 
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{
+      this.serviceUser.register(body, 'register.php').subscribe(async data =>{
         var alertpesan = data.msg;
         if(data.success){
           this.router.navigate(['/login']);

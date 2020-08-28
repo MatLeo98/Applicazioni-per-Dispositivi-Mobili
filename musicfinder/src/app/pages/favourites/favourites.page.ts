@@ -116,12 +116,14 @@ export class FavouritesPage implements OnInit {
     let body = {
         aksi : 'delArtistaPref',
         username: this.username,
-        id_artist: id_artista,
+        id_artista: id_artista,
       };
 
       this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
        // this.ionViewWillEnter();
-       var myobj = document.getElementById("elem");
+       /*var list = document.getElementById("mylist");
+        list.removeChild(list.childNodes[1]);*/
+      var myobj = document.getElementById("elem");
       myobj.remove();
        console.log("Preferito Eliminato");
       });
@@ -150,13 +152,14 @@ delBranopref(id_brano){
     let body = {
         aksi : 'delBranoPref',
         username: this.username,
-        id_song: id_brano,
+        id_brano: id_brano,
       };
 
       this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
        // this.ionViewWillEnter();
-       var myobj = document.getElementById("elem");
+      var myobj = document.getElementById("elem");
       myobj.remove();
+      //location.reload(); Ricaricare la pagina
        console.log("Preferito Eliminato");
       });
 
