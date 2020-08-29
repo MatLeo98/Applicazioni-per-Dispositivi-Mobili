@@ -202,7 +202,7 @@ delBranopref(id_brano){
       };
       
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.getAlbumsPreferiti(body, 'albumspref.php').subscribe(data => {
   			/*for(let favourite of data.result){
   				this.favourites.push(favourite);
         }*/
@@ -226,7 +226,7 @@ delBranopref(id_brano){
        };
        
  
-       this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+       this.serviceFavourites.getBraniPreferiti(body, 'branipref.php').subscribe(data => {
        /*	for(let favourite of data.result){
            this.favourites.push(favourite);
          }*/
