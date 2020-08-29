@@ -4,6 +4,8 @@ import { ToastController } from '@ionic/angular';
 import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
+import { ReviewsService } from 'src/app/services/reviews.service';
+
 
 @Component({
   selector: 'app-reviews',
@@ -43,7 +45,8 @@ constructor(private platform:Platform, 	private router: Router,
   private postPvdr: PostProvider,
   private storage: Storage,
   public toastCtrl: ToastController,
-  private actRoute: ActivatedRoute){
+  private actRoute: ActivatedRoute,
+  private serviceReviews: ReviewsService){
 
     this.platform.ready().then(()=>{
       for(var interval =0; interval<20;interval++)
@@ -114,7 +117,7 @@ ngOnInit() {
       album_id : this.id,
     };
 
-    this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+    this.serviceReviews.getRecensioniAlbum(body, 'recensionialbum.php').subscribe(data => {
       for(let review of data.result){
         this.reviews.push(review);
       }
@@ -141,7 +144,7 @@ loadReviewsBrani(){
       id_brano : this.id_brano,
     };
 
-    this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+    this.serviceReviews.getRecensioniBrani(body, 'recensionibrani.php').subscribe(data => {
       for(let review of data.result){
         this.reviews.push(review);
       }
