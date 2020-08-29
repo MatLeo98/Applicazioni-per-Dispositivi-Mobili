@@ -7,13 +7,35 @@ header('Access-Control-Allow-Origin: *');
   header("Content-Type: application/json; charset=utf-8");
 
   include "library/config.php";
+  
+  $postjson = json_decode(file_get_contents('php://input'), true);
+  $today    = date('Y-m-d');
 
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+/*if($postjson['aksi']=='getartista'){
+	$data = array();
+	$query = mysqli_query($mysqli, "SELECT * FROM artista");
 
-    $data = array();
-	$sql = mysqli_query($mysqli, "SELECT *  FROM artisti_preferiti, artista WHERE artista.id_artista = artisti_preferiti.id_artista AND username='$postjson[username]'");
+	while($row = mysqli_fetch_array($query)){
 
-	while($row = mysqli_fetch_array($sql)){
+		$data[] = array(
+	    'id_artista' => $row['id_artista'],
+	  'nome' => $row['nome'],
+	  'storia' => $row['storia'],
+	  'immart' => $row['immart'],
+		);
+  }
+
+	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+	else $result = json_encode(array('success'=>false));
+
+    echo $result;
+    }*/
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        $data = array();
+	$query = mysqli_query($mysqli, "SELECT *  FROM artisti_preferiti, artista WHERE artista.id_artista = artisti_preferiti.id_artista AND username='$postjson[username]'");
+
+	while($row = mysqli_fetch_array($query)){
 
 		$data[] = array(
 	  'id_artista' => $row['id_artista'],
@@ -23,13 +45,13 @@ header('Access-Control-Allow-Origin: *');
 	  'immart' => $row['immart']
 
 		);
-    }
+	}
 
-
-    if($sql) $result = json_encode(array('success'=>true, 'result'=>$data));
+	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
 	else $result = json_encode(array('success'=>false));
 
 	echo $result;
 
-}
+  }
+	  
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostProvider } from '../../../providers/post-provider';
 import { Storage } from '@ionic/Storage';
+import { FavouritesService } from 'src/app/services/favourites.service';
 /* import { url } from 'inspector'; */
 
 @Component({
@@ -43,7 +44,8 @@ export class FavouritesPage implements OnInit {
   constructor(
     private router: Router,
     private storage: Storage,
-    private postPvdr: PostProvider) {}
+    private postPvdr: PostProvider,
+    private serviceFavourites: FavouritesService) {}
 
   filtro(){
 
@@ -177,7 +179,7 @@ delBranopref(id_brano){
       };
       
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.getArtistiPreferiti(body, 'artistipref.php').subscribe(data => {
   		/*	for(let favourite of data.result){
   				this.favourites.push(favourite);
         }*/
