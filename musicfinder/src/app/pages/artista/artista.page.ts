@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostProvider } from '../../../providers/post-provider';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
+import { FavouritesService } from 'src/app/services/favourites.service';
+
 
 @Component({
   selector: 'app-artista',
@@ -25,7 +27,9 @@ export class ArtistaPage implements OnInit {
   
 
   constructor(private router: Router, private postPvdr: PostProvider,
-  	private actRoute: ActivatedRoute, private storage: Storage) { }
+    private actRoute: ActivatedRoute, private storage: Storage,
+    private serviceFavourites: FavouritesService
+    ) { }
 
   ngOnInit() {
 
@@ -102,7 +106,7 @@ export class ArtistaPage implements OnInit {
         
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.addArtistaPref(body, 'addartistapref.php').subscribe(data => {
   			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
   			console.log('Preferito Aggiunto');
   		});

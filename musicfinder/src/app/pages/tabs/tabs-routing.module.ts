@@ -221,7 +221,7 @@ const routes: Routes = [
 
       { path: 'reviews/brani/:id_brano', loadChildren: './pages/reviews/reviews.module#ReviewsPageModule' },
 
-      { path: 'addreview/:id', loadChildren: './pages/addreview/addreview.module#AddreviewPageModule' },
+      { path: 'addreview/album/:id', loadChildren: './pages/addreview/addreview.module#AddreviewPageModule' },
       { path: 'addreview/brano/:id_brano', loadChildren: './pages/addreview/addreview.module#AddreviewPageModule' },
 
       { path: 'results/search/:event/:filter', loadChildren: './pages/results/results.module#ResultsPageModule' }, //search

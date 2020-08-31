@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
+import { ReviewsService } from 'src/app/services/reviews.service';
+
 
 
 @Component({
@@ -27,7 +29,8 @@ export class AddreviewPage implements OnInit {
     private postPvdr: PostProvider,
   	private router: Router,
     private actRoute: ActivatedRoute,
-    private storage: Storage) { }
+    private storage: Storage,
+    private serviceReviews: ReviewsService) { }
 
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) =>{
@@ -36,7 +39,7 @@ export class AddreviewPage implements OnInit {
       /*this.titolo = data.titolo;
       this.valutazione = data.valutazione;
       this.testo = data.testo;*/
-      
+      console.log(this.id, this.id_brano);
   		console.log(data);
   	});
   }
@@ -55,7 +58,7 @@ export class AddreviewPage implements OnInit {
     console.log(this.id);
   	return new Promise(resolve => {
   		let body = {
-  			aksi : 'addreview',
+  			apiname : 'addreview',
   			titolo : this.titolo,
         valutazione : this.valutazione,
         testo : this.testo,
@@ -64,7 +67,7 @@ export class AddreviewPage implements OnInit {
         
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceReviews.addReviewAlbum(body, 'addrecensionialbum.php').subscribe(data => {
   			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
   			console.log('OK');
   		});
@@ -86,7 +89,7 @@ export class AddreviewPage implements OnInit {
         
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceReviews.addReviewBrano(body, 'addrecensionibrano.php').subscribe(data => {
   			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
   			console.log('OK');
   		});

@@ -129,9 +129,9 @@ ngOnInit() {
 
 addreview(id, id_brano){
   console.log(id, id_brano);
-    if(id != 0)
-      this.router.navigate(['/tabs/addreview/' + id ]);
-    if(id_brano != 0)
+    if(id != undefined)
+      this.router.navigate(['/tabs/addreview/album/' + id ]);
+    if(id_brano != undefined)
       this.router.navigate(['/tabs/addreview/brano/' + id_brano ]);
 }
 

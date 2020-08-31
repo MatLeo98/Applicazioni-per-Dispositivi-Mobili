@@ -14,27 +14,22 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         
-        $data = array();
-        $query = mysqli_query($mysqli, "SELECT * FROM recensione_album WHERE id_album='$postjson[album_id]'");
+      $query = mysqli_query($mysqli, "INSERT INTO recensione_brano SET
 
-	while($row = mysqli_fetch_array($query)){
+		username = '$postjson[username]',
+		id_brano = '$postjson[id_brano]',
+		titolo = '$postjson[titolo]',
+		valutazione = '$postjson[valutazione]',
+		testo	  = '$postjson[testo]'
+	
+	");
 
-		$data[] = array(
-            'id' => $row['id'],
-            'titolo' => $row['titolo'],
-            'testo' => $row['testo'],
-            'valutazione' => $row['valutazione'],
-            'username' => $row['username'],
-            'id_album' => $row['id_album'],
+	$idbrano = mysqli_insert_id($mysqli);
 
-		);
-	}
-
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+	if($query) $result = json_encode(array('success'=>true, 'branoid'=>$idbrano));
 	else $result = json_encode(array('success'=>false));
 
 	echo $result;
-
   }
 	  
 

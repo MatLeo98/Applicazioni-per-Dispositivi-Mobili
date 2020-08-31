@@ -1,5 +1,6 @@
 <?php
 
+
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Credentials: true");
   header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -12,25 +13,16 @@
   $today    = date('Y-m-d');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
         
-        $data = array();
-        $query = mysqli_query($mysqli, "SELECT * FROM recensione_album WHERE id_album='$postjson[album_id]'");
+      $query = mysqli_query($mysqli, "INSERT INTO brani_preferiti SET
+		username = '$postjson[username]',
+		id_brano = '$postjson[id_brano]'
+	
+	");
 
-	while($row = mysqli_fetch_array($query)){
+	$id = mysqli_insert_id($mysqli);
 
-		$data[] = array(
-            'id' => $row['id'],
-            'titolo' => $row['titolo'],
-            'testo' => $row['testo'],
-            'valutazione' => $row['valutazione'],
-            'username' => $row['username'],
-            'id_album' => $row['id_album'],
-
-		);
-	}
-
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+	if($query) $result = json_encode(array('success'=>true, 'id'=>$id));
 	else $result = json_encode(array('success'=>false));
 
 	echo $result;
