@@ -69,5 +69,72 @@ export class FavouritesService {
     .map(res => res.json());
   }
 
+  deleteArtistaPref(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+  deleteAlbumPref(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+  deleteBranoPref(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+  getStarArtista(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+  getStarAlbum(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+  getStarBrano(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+  }
+
+
   
 }

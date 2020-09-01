@@ -59,7 +59,7 @@ constructor(private platform:Platform, 	private router: Router,
 
 ngOnInit() {
   this.actRoute.params.subscribe((data: any) =>{
-    this.id = data.id;
+    this.id = data.id_album;
     this.id_brano = data.id_brano;
 
     console.log(data);

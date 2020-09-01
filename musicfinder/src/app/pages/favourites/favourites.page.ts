@@ -17,7 +17,7 @@ export class FavouritesPage implements OnInit {
   user_id: number;
   favourites: any = [];
 
-  artisti = [
+ /* artisti = [
 
     {id: 1, name: 'Thom Yorke', type: 'Artista'},
     {id: 2, name: 'Radiohead', type: 'Artista'},
@@ -36,7 +36,7 @@ export class FavouritesPage implements OnInit {
     {id: 5, name: 'Optimistic', artist: 'Radiohead', year: '2000', type: 'Brano'},
     {id: 6, name: 'Traffic', artist: 'Thom  Yorke', year: '2019', type: 'Brano'},
 
-  ];
+  ];*/
 
   filt : number;
 
@@ -121,7 +121,7 @@ export class FavouritesPage implements OnInit {
         id_artista: id_artista,
       };
 
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+      this.serviceFavourites.deleteArtistaPref(body, 'delartistapref.php').subscribe(data => {
        // this.ionViewWillEnter();
        /*var list = document.getElementById("mylist");
         list.removeChild(list.childNodes[1]);*/
@@ -140,7 +140,7 @@ delAlbumpref(id){
       id_album: id,
     };
 
-    this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+    this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
      // this.ionViewWillEnter();
      var myobj = document.getElementById("elem");
     myobj.remove();
@@ -157,7 +157,7 @@ delBranopref(id_brano){
         id_brano: id_brano,
       };
 
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+      this.serviceFavourites.deleteBranoPref(body, 'delbranopref.php').subscribe(data => {
        // this.ionViewWillEnter();
       var myobj = document.getElementById("elem");
       myobj.remove();

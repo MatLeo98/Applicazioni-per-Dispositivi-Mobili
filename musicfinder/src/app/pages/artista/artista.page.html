@@ -50,7 +50,8 @@
 
       <ion-col *ngFor="let item of items" size="auto">
 
-        <ion-card class="image-container" button="true" routerLink="/tabs/home/results/0/artista/{{id_artista}}/{{nome}}/{{storia}}/{{immart}}/album/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{nome}}">  <img src="./assets/albums/{{ item.immagine }}.jpg" /> </ion-card>
+        <ion-card class="image-container" button="true" *ngIf="y == 10" routerLink="/tabs/favourites/10/artista/{{id_artista}}/{{nome}}/{{storia}}/{{immart}}/album/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{nome}}">  <img src="./assets/albums/{{ item.immagine }}.jpg" /> </ion-card>
+        <ion-card class="image-container" button="true" *ngIf="y != 10" routerLink="/tabs/home/results/0/artista/{{id_artista}}/{{nome}}/{{storia}}/{{immart}}/album/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{nome}}">  <img src="./assets/albums/{{ item.immagine }}.jpg" /> </ion-card>
 
         <p class="ion-text-center">{{ item.titolo }} ({{ item.anno }})</p>
 

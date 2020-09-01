@@ -97,7 +97,7 @@ export class SongPage implements OnInit {
   }
 
   reviews(id_brano){
-  	this.router.navigate(['/tabs/reviews/brani/' + id_brano]);
+  	this.router.navigate(['/tabs/home/results/2/song/' +this.id_brano+'/'+this.id_album+'/'+this.titolo+'/'+this.durata+'/'+this.valutazione_media+'/'+this.descrizione+'/'+this.testo+'/'+this.youtube+'/'+this.genere+'/'+this.titalb+'/'+this.nome+'/'+this.immagine+'/reviews/brani/' + id_brano]);
   }
 
 
@@ -127,7 +127,7 @@ export class SongPage implements OnInit {
           id_brano: this.id_brano,
         };
   
-        this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+        this.serviceFavourites.deleteBranoPref(body, 'delbranopref.php').subscribe(data => {
          // this.ionViewWillEnter();
          console.log("Preferito Eliminato");
         });
@@ -143,7 +143,7 @@ export class SongPage implements OnInit {
         id_brano : this.id_brano,
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.getStarBrano(body, 'getstarbrano.php').subscribe(data => {
   			for(let customer of data.result){
           console.log(customer);
           if(customer.id_brano == this.id_brano){ 

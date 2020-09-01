@@ -28,5 +28,31 @@
     echo $result;
 
   }
+
+  if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+
+    $data = array();
+   
+		$sql = mysqli_query($mysqli, "DELETE FROM album_preferiti WHERE id_album='$id_album'");
+		//$sql= $conn->query("SELECT * FROM artista;");
+		
+		
+        
+        if($sql){
+            /*while ($d = $sql->fetch_assoc()){
+                $data[]=$d;
+			}*/
+			
+		  
+            http_response_code(201);
+
+        }
+        else{
+            http_response_code(500);
+		}
+		exit (json_encode($data));
+
+
+  }
 	  
 

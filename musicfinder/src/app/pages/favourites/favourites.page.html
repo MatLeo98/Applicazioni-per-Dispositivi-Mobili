@@ -83,7 +83,7 @@ selectElement.addEventListener('change', (event) => {
 }); -->
 
 <ion-list *ngIf="filt == 0" lines="none">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" routerLink="/tabs/favourites/10/artista/{{favourite.id_artista}}/{{favourite.nome}}/{{favourite.storia}}/{{favourite.immart}}">
 
     <ion-avatar slot="start">
       <img src="assets/images/personicon.jpg">
@@ -103,7 +103,7 @@ selectElement.addEventListener('change', (event) => {
   </ion-item>
 </ion-list>
 <ion-list  lines="none" *ngIf="filt == 1">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" (click)="showcustomer()">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" routerLink="/tabs/favourites/album/{{favourite.id_album}}/{{favourite.id_artista}}/{{favourite.titolo}}/{{favourite.genere}}/{{favourite.anno}}/{{favourite.immagine}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.nome}}">
 
     <ion-avatar slot="start">
       <img src="assets/images/albumicon.png">
@@ -124,7 +124,7 @@ selectElement.addEventListener('change', (event) => {
   </ion-item>
 </ion-list>
 <ion-list *ngIf="filt == 2" lines="none">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites">
+  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites"  routerLink="/tabs/favourites/song/{{favourite.id_brano}}/{{favourite.id_album}}/{{favourite.titolo}}/{{favourite.durata}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.testo}}/{{favourite.youtube}}/{{favourite.genere}}/{{favourite.titalb}}/{{favourite.nome}}/{{favourite.immagine}}">
 
     <ion-avatar slot="start">
       <img src="assets/images/songicon.png">

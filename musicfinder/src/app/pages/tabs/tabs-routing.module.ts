@@ -66,7 +66,13 @@ const routes: Routes = [
                     loadChildren: './pages/album/album.module#AlbumPageModule' 
                   },
                   {
+                    path: 'reviews/:id_album',
+                    loadChildren: './pages/reviews/reviews.module#ReviewsPageModule'
+
+                  },
+                  {
                     path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+                    
                     loadChildren: './pages/song/song.module#SongPageModule'
                   }
                 ] 
@@ -110,7 +116,18 @@ const routes: Routes = [
  
               {
                 path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
-                loadChildren: './pages/song/song.module#SongPageModule'
+                children: [
+                  {
+                    path: '',
+                    loadChildren: './pages/song/song.module#SongPageModule' 
+                  },
+                  {
+                    path: 'reviews/brani/:id_brano',
+                    loadChildren: './pages/reviews/reviews.module#ReviewsPageModule'
+                    
+                  },
+                ]
+                
               }
  
             ]
@@ -160,8 +177,57 @@ const routes: Routes = [
       },
       {
         path: 'favourites',
-        loadChildren: () => import('../favourites/favourites.module').then(m => m.FavouritesPageModule)
-      },
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../favourites/favourites.module').then(m => m.FavouritesPageModule)
+          },
+          {path: ':y/artista/:id_artista/:nome/:storia/:immart',
+                  children: [
+                    {
+                      path: '',
+                      loadChildren: './pages/artista/artista.module#ArtistaPageModule' 
+                    },
+ 
+                    {
+                      path: 'album/:id_album/:id_artista/:titolo/:genere/:anno/:immagine/:valutazione_media/:descrizione/:nome',
+                      children: [
+                  {
+                    path: '',
+                    loadChildren: './pages/album/album.module#AlbumPageModule' 
+                  },
+                  {
+                    path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+                    loadChildren: './pages/song/song.module#SongPageModule'
+                  }
+                ]
+                    },
+ 
+                  ]
+                },
+
+        { 
+        path: 'album/:id_album/:id_artista/:titolo/:genere/:anno/:immagine/:valutazione_media/:descrizione/:nome',
+        children: [
+          {
+            path: '',
+            loadChildren: './pages/album/album.module#AlbumPageModule' 
+          },
+          {
+            path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+            loadChildren: './pages/song/song.module#SongPageModule'
+          }
+        ] 
+    
+        },
+
+        {
+          path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+          loadChildren: './pages/song/song.module#SongPageModule'
+        }
+
+    ]
+  },
 
       {
         path: 'login',

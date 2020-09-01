@@ -3,6 +3,7 @@ import { PostProvider } from '../../../providers/post-provider';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
+import { ArtistaService } from 'src/app/services/artista.service';
 
 
 @Component({
@@ -23,12 +24,14 @@ export class ArtistaPage implements OnInit {
   anggota: any;
   username: string;
   user_id: number;
+  y: number;
 
   
 
   constructor(private router: Router, private postPvdr: PostProvider,
     private actRoute: ActivatedRoute, private storage: Storage,
-    private serviceFavourites: FavouritesService
+    private serviceFavourites: FavouritesService,
+    private serviceArtista: ArtistaService
     ) { }
 
   ngOnInit() {
@@ -38,6 +41,7 @@ export class ArtistaPage implements OnInit {
       this.nome = data.nome;
       this.storia = data.storia;
       this.immart = data.immart;
+      this.y = data.y;
       console.log(data);
     });
   }
@@ -70,7 +74,7 @@ export class ArtistaPage implements OnInit {
         artista_id: this.id_artista,
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceArtista.getAlbumArtista(body, 'albumartista.php').subscribe(data => {
   			for(let album of data.result){
   				this.items.push(album);
   			}
@@ -122,7 +126,7 @@ export class ArtistaPage implements OnInit {
           id_artista: this.id_artista,
         };
   
-        this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+        this.serviceFavourites.deleteArtistaPref(body, 'delartistapref.php').subscribe(data => {
          // this.ionViewWillEnter();
          console.log("Preferito Eliminato");
         });
@@ -138,7 +142,7 @@ export class ArtistaPage implements OnInit {
         id_artista : this.id_artista,
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.getStarArtista(body, 'getstarartista.php').subscribe(data => {
   			for(let customer of data.result){
           console.log(customer);
           if(customer.id_artista == this.id_artista){ 

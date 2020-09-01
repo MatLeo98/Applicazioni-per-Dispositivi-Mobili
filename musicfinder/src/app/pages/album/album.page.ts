@@ -3,6 +3,7 @@ import { PostProvider } from '../../../providers/post-provider';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
+import { AlbumService } from 'src/app/services/album.service';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class AlbumPage implements OnInit {
 
   constructor(private router: Router, private postPvdr: PostProvider,
     private actRoute: ActivatedRoute, private storage: Storage,
-    private serviceFavourites: FavouritesService
+    private serviceFavourites: FavouritesService,
+    private serviceAlbum: AlbumService
     ) {
 
 
@@ -87,7 +89,7 @@ export class AlbumPage implements OnInit {
 
 
   reviews(id_album){
-  	this.router.navigate(['/tabs/reviews/' + id_album]);
+    this.router.navigate(['/tabs/home/results/1/album/' + id_album + '/' + this.id_artista + '/' + this.titolo + '/' + this.genere + '/' + this.anno + '/' + this.immagine + '/' + this.valutazione_media + '/' + this.descrizione + '/' + this.nome + '/reviews/' + id_album]);
   }
 
   ionViewWillEnter(){
@@ -119,7 +121,7 @@ export class AlbumPage implements OnInit {
         album_id : this.id_album, 
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceAlbum.getBraniAlbum(body, 'branialbum.php').subscribe(data => {
   			for(let brano of data.result){
   				this.items.push(brano);
   			}
@@ -154,12 +156,29 @@ export class AlbumPage implements OnInit {
           id_album: this.id_album,
         };
   
-        this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+        this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
          // this.ionViewWillEnter();
          console.log("Preferito Eliminato");
         });
   
   }
+
+  /*delpref(){
+    console.log(this.id_album);
+    let body = {
+        aksi : 'delAlbumPref',
+        username: this.username,
+        id_album: this.id_album,
+      };
+
+      this.serviceFavourites.deleteAlbumPref(body, 'addalbumpref.php', this.id_album).subscribe(data => {
+       // this.ionViewWillEnter();
+       console.log("Preferito Eliminato");
+      });
+
+}*/
+
+
 
   getpref(){
     
@@ -170,7 +189,7 @@ export class AlbumPage implements OnInit {
         id_album : this.id_album,
   		};
 
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  		this.serviceFavourites.getStarAlbum(body, 'getstaralbum.php').subscribe(data => {
   			for(let customer of data.result){
           console.log(customer);
           if(customer.id_album == this.id_album){ 

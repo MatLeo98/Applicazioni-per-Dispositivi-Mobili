@@ -15,19 +15,21 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $data = array();
-        $query = mysqli_query($mysqli, "SELECT album_preferiti.username, album.id_album, album.titolo, album.genere, album.immagine, album.valutazione_media, album.descrizione, artista.nome FROM album_preferiti, album, artista WHERE album.id_album = album_preferiti.id_album  AND album.id_artista = artista.id_artista AND album_preferiti.username='$postjson[username]'");
+        $query = mysqli_query($mysqli, "SELECT album_preferiti.username, album.id_album, album.titolo, album.anno, album.genere, album.immagine, album.valutazione_media, album.descrizione, artista.id_artista, artista.nome FROM album_preferiti, album, artista WHERE album.id_album = album_preferiti.id_album  AND album.id_artista = artista.id_artista AND album_preferiti.username='$postjson[username]'");
 
 	while($row = mysqli_fetch_array($query)){
 
 		$data[] = array(
             'username' => $row['username'],
             'id_album' => $row['id_album'],
+            'id_artista' => $row['id_artista'],
             'titolo' => $row['titolo'],
+            'anno' => $row['anno'],
             'genere' => $row['genere'],
             'immagine' => $row['immagine'],
             'valutazione_media' => $row['valutazione_media'],
             'descrizione' => $row['descrizione'],
-            'nome' => $row['nome'],
+            'nome' => $row['nome']
 
 		);
 	}
