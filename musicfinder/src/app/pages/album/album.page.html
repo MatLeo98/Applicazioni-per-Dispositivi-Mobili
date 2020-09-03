@@ -147,12 +147,17 @@
 
   <ion-title>Tracce</ion-title>
 
-  <ion-list lines="none">
+  <ion-list lines="none" *ngFor="let item of items">
     <!-- <a routerLink="/tabs/home/results/album/{{id_album}}/{{id_artista}}/{{titolo}}/{{genere}}/{{anno}}/{{immagine}}/{{valutazione_media}}/{{descrizione}}/{{nome}}/song/{{item.id_album}}/{{item.id_artista}}/{{item.titolo}}/{{item.genere}}/{{item.anno}}/{{item.immagine}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.nome}}"> -->
-    <ion-item button="true" class="listitem" routerLink="/tabs/home/results/1/album/{{id_album}}/{{id_artista}}/{{titolo}}/{{genere}}/{{anno}}/{{immagine}}/{{valutazione_media}}/{{descrizione}}/{{nome}}/song/{{item.id_brano}}/{{item.id_album}}/{{item.titolo}}/{{item.durata}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.testo}}/{{item.youtube}}/{{item.genere}}/{{item.titalb}}/{{item.nome}}/{{item.immagine}}" *ngFor="let item of items">
+    <ion-item button="true" class="listitem" *ngIf="y!=10" routerLink="/tabs/home/results/1/album/{{id_album}}/{{id_artista}}/{{titolo}}/{{genere}}/{{anno}}/{{immagine}}/{{valutazione_media}}/{{descrizione}}/{{nome}}/song/{{item.id_brano}}/{{item.id_album}}/{{item.titolo}}/{{item.durata}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.testo}}/{{item.youtube}}/{{item.genere}}/{{item.titalb}}/{{item.nome}}/{{item.immagine}}" >
       <p>{{ item.titolo }}</p>
       <ion-icon slot="end" name="chevron-forward-outline" class="arrow"></ion-icon>
     </ion-item>
+    <ion-item button="true" class="listitem" *ngIf="y==10" routerLink="/tabs/favourites/10/album/{{id_album}}/{{id_artista}}/{{titolo}}/{{genere}}/{{anno}}/{{immagine}}/{{valutazione_media}}/{{descrizione}}/{{nome}}/song/{{item.id_brano}}/{{item.id_album}}/{{item.titolo}}/{{item.durata}}/{{item.valutazione_media}}/{{item.descrizione}}/{{item.testo}}/{{item.youtube}}/{{item.genere}}/{{item.titalb}}/{{item.nome}}/{{item.immagine}}" >
+      <p>{{ item.titolo }}</p>
+      <ion-icon slot="end" name="chevron-forward-outline" class="arrow"></ion-icon>
+    </ion-item>
+    
   
   </ion-list>
 

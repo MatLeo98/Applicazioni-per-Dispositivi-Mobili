@@ -9,7 +9,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class ReviewsService {
 
-  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/recensioni/";
 
 
   constructor(private httpclient: HttpClient, public http : Http) { }

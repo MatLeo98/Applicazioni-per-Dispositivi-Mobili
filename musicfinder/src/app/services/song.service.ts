@@ -11,7 +11,7 @@ import {Brano} from '../model/brano.model';
 })
 export class SongService {
 
-  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/brani/";
 
   constructor(private httpclient: HttpClient, public http : Http) { }
 

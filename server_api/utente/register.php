@@ -37,6 +37,7 @@ header('Access-Control-Allow-Origin: *');
         email = '$postjson[email]',
         username = '$postjson[username]',
         password = '$password',
+        immagine = '$postjson[img]',
         status   = 'y'
       ");
   

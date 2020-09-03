@@ -83,14 +83,14 @@ selectElement.addEventListener('change', (event) => {
 }); -->
 
 <ion-list *ngIf="filt == 0" lines="none">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" routerLink="/tabs/favourites/10/artista/{{favourite.id_artista}}/{{favourite.nome}}/{{favourite.storia}}/{{favourite.immart}}">
+  <ion-item class="listitem" button="true" id="{{favourite.id_artista}}" *ngFor="let favourite of favourites" >
 
     <ion-avatar slot="start">
       <img src="assets/images/personicon.jpg">
     </ion-avatar>
 
   
-    <ion-label for="but">
+    <ion-label for="but" routerLink="/tabs/favourites/10/artista/{{favourite.id_artista}}/{{favourite.nome}}/{{favourite.storia}}/{{favourite.immart}}">
 
      <!-- <p class="scritta">{{ elem.artist }} </p>-->
       <h3> {{ favourite.nome }} </h3>
@@ -103,14 +103,14 @@ selectElement.addEventListener('change', (event) => {
   </ion-item>
 </ion-list>
 <ion-list  lines="none" *ngIf="filt == 1">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites" routerLink="/tabs/favourites/album/{{favourite.id_album}}/{{favourite.id_artista}}/{{favourite.titolo}}/{{favourite.genere}}/{{favourite.anno}}/{{favourite.immagine}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.nome}}">
+  <ion-item class="listitem" button="true" id="{{favourite.id_album}}" *ngFor="let favourite of favourites" >
 
     <ion-avatar slot="start">
       <img src="assets/images/albumicon.png">
     </ion-avatar>
 
   
-    <ion-label for="but">
+    <ion-label for="but" routerLink="/tabs/favourites/10/album/{{favourite.id_album}}/{{favourite.id_artista}}/{{favourite.titolo}}/{{favourite.genere}}/{{favourite.anno}}/{{favourite.immagine}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.nome}}">
 
       <h3> {{ favourite.titolo }} </h3>
       <p class="scritta">{{ favourite.nome }} </p>
@@ -124,14 +124,14 @@ selectElement.addEventListener('change', (event) => {
   </ion-item>
 </ion-list>
 <ion-list *ngIf="filt == 2" lines="none">
-  <ion-item class="listitem" button="true" id="elem" *ngFor="let favourite of favourites"  routerLink="/tabs/favourites/song/{{favourite.id_brano}}/{{favourite.id_album}}/{{favourite.titolo}}/{{favourite.durata}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.testo}}/{{favourite.youtube}}/{{favourite.genere}}/{{favourite.titalb}}/{{favourite.nome}}/{{favourite.immagine}}">
+  <ion-item class="listitem" button="true" id="{{favourite.id_brano}}" *ngFor="let favourite of favourites"  >
 
     <ion-avatar slot="start">
       <img src="assets/images/songicon.png">
     </ion-avatar>
 
   
-    <ion-label for="but">
+    <ion-label for="but" routerLink="/tabs/favourites/10/song/{{favourite.id_brano}}/{{favourite.id_album}}/{{favourite.titolo}}/{{favourite.durata}}/{{favourite.valutazione_media}}/{{favourite.descrizione}}/{{favourite.testo}}/{{favourite.youtube}}/{{favourite.genere}}/{{favourite.titalb}}/{{favourite.nome}}/{{favourite.immagine}}">
 
       
       <h3> {{ favourite.titolo }} </h3>

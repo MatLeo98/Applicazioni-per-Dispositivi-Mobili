@@ -3,6 +3,8 @@ import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { ReviewsService } from 'src/app/services/reviews.service';
+import { Location } from "@angular/common";
+
 
 
 
@@ -30,7 +32,8 @@ export class AddreviewPage implements OnInit {
   	private router: Router,
     private actRoute: ActivatedRoute,
     private storage: Storage,
-    private serviceReviews: ReviewsService) { }
+    private serviceReviews: ReviewsService,
+    private location: Location) { }
 
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) =>{
@@ -69,7 +72,8 @@ export class AddreviewPage implements OnInit {
 
   		this.serviceReviews.addReviewAlbum(body, 'addrecensionialbum.php').subscribe(data => {
   			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
-  			console.log('OK');
+        console.log('OK');
+        this.location.back();
   		});
   	});
 
@@ -90,11 +94,16 @@ export class AddreviewPage implements OnInit {
   		};
 
   		this.serviceReviews.addReviewBrano(body, 'addrecensionibrano.php').subscribe(data => {
-  			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
-  			console.log('OK');
+        //this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
+        console.log('OK');
+        this.location.back();
   		});
   	});
 
+  }
+
+  back(){
+    this.location.back();
   }
 
 

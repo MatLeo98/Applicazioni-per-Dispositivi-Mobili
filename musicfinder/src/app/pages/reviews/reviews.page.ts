@@ -29,6 +29,8 @@ export class ReviewsPage implements OnInit{
   id_album: number;
   id: number = 0;
   id_brano: number = 0;
+  brani: string;
+  
   //       constructor(private platform:Platform){
 //       
   //         this.platform.ready().then(()=>{
@@ -61,7 +63,7 @@ ngOnInit() {
   this.actRoute.params.subscribe((data: any) =>{
     this.id = data.id_album;
     this.id_brano = data.id_brano;
-
+    this.brani = data.brani;
     console.log(data);
   });
 }
@@ -93,10 +95,17 @@ ngOnInit() {
 
   	this.reviews = [];
     this.start = 0;
-    if(this.id_brano != undefined)
+    
+    /*if(this.id_brano != undefined)
       this.loadReviewsBrani();
     if(this.id != undefined)
-  	  this.loadReview();
+      this.loadReview();*/
+    if(this.brani != undefined)
+      this.loadReviewsBrani();
+    else
+      this.loadReview();
+      
+
   }
 
   /*loadData(event:any){

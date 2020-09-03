@@ -125,7 +125,7 @@ export class FavouritesPage implements OnInit {
        // this.ionViewWillEnter();
        /*var list = document.getElementById("mylist");
         list.removeChild(list.childNodes[1]);*/
-      var myobj = document.getElementById("elem");
+      var myobj = document.getElementById(id_artista);
       myobj.remove();
        console.log("Preferito Eliminato");
       });
@@ -142,7 +142,7 @@ delAlbumpref(id){
 
     this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
      // this.ionViewWillEnter();
-     var myobj = document.getElementById("elem");
+     var myobj = document.getElementById(id);
     myobj.remove();
      console.log("Preferito Eliminato");
     });
@@ -159,7 +159,7 @@ delBranopref(id_brano){
 
       this.serviceFavourites.deleteBranoPref(body, 'delbranopref.php').subscribe(data => {
        // this.ionViewWillEnter();
-      var myobj = document.getElementById("elem");
+      var myobj = document.getElementById(id_brano);
       myobj.remove();
       //location.reload(); Ricaricare la pagina
        console.log("Preferito Eliminato");

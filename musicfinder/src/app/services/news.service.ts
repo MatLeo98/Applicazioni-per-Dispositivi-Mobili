@@ -11,7 +11,7 @@ import {Notizia} from '../model/notizia.model';
 })
 export class NewsService {
 
-  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/news/";
 
   constructor(private httpclient: HttpClient, public http : Http) { }
 

@@ -37,6 +37,7 @@ export class SongPage implements OnInit {
   val_media: number;
 
   check: number = 0;
+  y: number;
   
 
   constructor(private router: Router, private postPvdr: PostProvider,
@@ -59,6 +60,8 @@ export class SongPage implements OnInit {
       this.titalb = data.titalb;
       this.nome = data.nome;
       this.immagine = data.immagine;
+      this.y = data.y;
+      console.log(data);
    });
   }
 
@@ -97,8 +100,12 @@ export class SongPage implements OnInit {
   }
 
   reviews(id_brano){
-  	this.router.navigate(['/tabs/home/results/2/song/' +this.id_brano+'/'+this.id_album+'/'+this.titolo+'/'+this.durata+'/'+this.valutazione_media+'/'+this.descrizione+'/'+this.testo+'/'+this.youtube+'/'+this.genere+'/'+this.titalb+'/'+this.nome+'/'+this.immagine+'/reviews/brani/' + id_brano]);
-  }
+    if(this.y != 10)
+  	  this.router.navigate(['/tabs/home/results/2/song/' +this.id_brano+'/'+this.id_album+'/'+this.titolo+'/'+this.durata+'/'+this.valutazione_media+'/'+this.descrizione+'/'+this.testo+'/'+this.youtube+'/'+this.genere+'/'+this.titalb+'/'+this.nome+'/'+this.immagine+'/reviews/brani/' + id_brano]);
+    else
+    this.router.navigate(['/tabs/favourites/10/song/' +this.id_brano+'/'+this.id_album+'/'+this.titolo+'/'+this.durata+'/'+this.valutazione_media+'/'+this.descrizione+'/'+this.testo+'/'+this.youtube+'/'+this.genere+'/'+this.titalb+'/'+this.nome+'/'+this.immagine+'/reviews/brani/' + id_brano]);
+
+    }
 
 
   addpref(){
@@ -199,8 +206,10 @@ export class SongPage implements OnInit {
        console.log(dato.valutazione, this.val_media);
        this.val_media =  +dato.valutazione + +this.val_media;
      }
-     if(this.val_media != 0)
+     if(this.val_media != 0){
       this.val_media = this.val_media / this.dati.length;
+      this.val_media = Math.round(this.val_media);
+     }
      
      console.log(this.val_media);
    }

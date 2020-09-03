@@ -6,7 +6,7 @@ header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
   header("Content-Type: application/json; charset=utf-8");
 
-  include "library/config.php";
+  include "../library/config.php";
 
 
   if ($_SERVER['REQUEST_METHOD'] == 'GET') {

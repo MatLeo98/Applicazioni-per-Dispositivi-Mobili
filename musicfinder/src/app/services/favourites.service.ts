@@ -10,7 +10,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class FavouritesService {
 
-  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/preferiti/";
 
   constructor(private httpclient: HttpClient, public http : Http) { }
 

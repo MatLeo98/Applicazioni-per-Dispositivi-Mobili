@@ -23,6 +23,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.logincheck();
+    this.loadimage();
     }
 
   logincheck(){
@@ -50,6 +51,10 @@ export class ProfilePage implements OnInit {
 
   gotoArtista(){
     this.router.navigateByUrl('/tabs/artista'); //cambiare il link
+
+  }
+
+  loadimage(){
 
   }
 

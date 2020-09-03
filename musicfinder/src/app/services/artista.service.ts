@@ -11,7 +11,7 @@ import {Artista} from '../model/artista.model';
 })
 export class ArtistaService {
 
-  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/";
+  server: string = "http://localhost/database/App/Applicazioni-per-Dispositivi-Mobili/server_api/artista/";
 
   constructor(private httpclient: HttpClient, public http : Http) { }
 

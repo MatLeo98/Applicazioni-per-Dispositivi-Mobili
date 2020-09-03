@@ -33,6 +33,7 @@ export class AlbumPage implements OnInit {
   media: number;
 
   check: number = 0;
+  y: number;
  // i: number;
   
 
@@ -59,6 +60,8 @@ export class AlbumPage implements OnInit {
       this.descrizione = data.descrizione;
       this.id_artista = data.id_artista;
       this.nome = data.nome;
+      this.y = data.y;
+      
       console.log(data);
 
       //this.ionViewWillEnter();
@@ -89,7 +92,11 @@ export class AlbumPage implements OnInit {
 
 
   reviews(id_album){
+    if(this.y != 10)
     this.router.navigate(['/tabs/home/results/1/album/' + id_album + '/' + this.id_artista + '/' + this.titolo + '/' + this.genere + '/' + this.anno + '/' + this.immagine + '/' + this.valutazione_media + '/' + this.descrizione + '/' + this.nome + '/reviews/' + id_album]);
+    else
+    this.router.navigate(['/tabs/favourites/10/album/' + id_album + '/' + this.id_artista + '/' + this.titolo + '/' + this.genere + '/' + this.anno + '/' + this.immagine + '/' + this.valutazione_media + '/' + this.descrizione + '/' + this.nome + '/reviews/' + id_album]);
+
   }
 
   ionViewWillEnter(){
@@ -249,8 +256,10 @@ export class AlbumPage implements OnInit {
       this.val_media =  +dato.valutazione + +this.val_media;
     }
     
-    if(this.val_media != 0)
+    if(this.val_media != 0){
       this.val_media = this.val_media / this.dati.length;
+      this.val_media = Math.round(this.val_media);
+    }
     
     console.log(this.val_media);
   }

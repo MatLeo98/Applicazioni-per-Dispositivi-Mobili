@@ -6,34 +6,30 @@
   header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
   header("Content-Type: application/json; charset=utf-8");
 
-  include "library/config.php";
+  include "../library/config.php";
   
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
         
-        $data = array();
-        $query = mysqli_query($mysqli, "SELECT * FROM recensione_brano WHERE id_brano='$postjson[id_brano]'");
+      $query = mysqli_query($mysqli, "INSERT INTO recensione_brano SET
 
-	while($row = mysqli_fetch_array($query)){
+		username = '$postjson[username]',
+		id_brano = '$postjson[id_brano]',
+		titolo = '$postjson[titolo]',
+		valutazione = '$postjson[valutazione]',
+		testo	  = '$postjson[testo]'
+	
+	");
 
-		$data[] = array(
-            'id' => $row['id'],
-			'username' => $row['username'],
-			'id_brano' => $row['id_brano'],
-			'titolo' => $row['titolo'],
-			'valutazione' => $row['valutazione'],
-			'testo' => $row['testo']
+	$idbrano = mysqli_insert_id($mysqli);
 
-		);
-	}
-
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+	if($query) $result = json_encode(array('success'=>true, 'branoid'=>$idbrano));
 	else $result = json_encode(array('success'=>false));
 
 	echo $result;
-
   }
 	  
 

@@ -7,16 +7,16 @@
   header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
   header("Content-Type: application/json; charset=utf-8");
 
-  include "library/config.php";
+  include "../library/config.php";
   
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-      $query = mysqli_query($mysqli, "INSERT INTO brani_preferiti SET
+      $query = mysqli_query($mysqli, "INSERT INTO artisti_preferiti SET
 		username = '$postjson[username]',
-		id_brano = '$postjson[id_brano]'
+		id_artista = '$postjson[id_artista]'
 	
 	");
 
