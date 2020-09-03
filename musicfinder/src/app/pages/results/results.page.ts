@@ -185,7 +185,7 @@ export class ResultsPage implements OnInit {
 
   searchAlbum(){
     
-  	return new Promise(resolve => {
+  	/*return new Promise(resolve => {
     
   		let body = {
   			//aksi : 'searchalbum',
@@ -199,6 +199,10 @@ export class ResultsPage implements OnInit {
   			}
   			resolve(true);
   		});
+    });*/
+
+    this.serviceAlbum.searchAlbum(this.event, 'allalbum.php').subscribe(response => {
+      this.items = response;
     });
     
 

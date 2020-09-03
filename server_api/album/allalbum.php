@@ -31,17 +31,34 @@ header('Access-Control-Allow-Origin: *');
     echo $result;
     }*/
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+		$data = array();
+		if(isset($_GET['event'])){
+			 $event= $mysqli->real_escape_string($_GET['event']);
+			 $sql= mysqli_query($mysqli,"SELECT * FROM album JOIN artista ON album.id_artista = artista.id_artista WHERE titolo LIKE '%$event%'");
+			 if($sql){
+				 while ($d = $sql->fetch_assoc()){
+					 $data[]=$d;
+				 }
+				 http_response_code(201);
+	 
+			 }
+			 else{
+				 http_response_code(500);
+			 }
+			
+			}else{
     	$data = array();
    
 		$sql = mysqli_query($mysqli, "SELECT * FROM album JOIN artista ON album.id_artista = artista.id_artista");
-		//$sql= $conn->query("SELECT * FROM artista;");
+		
 		
 		
         
         if($sql){
-            /*while ($d = $sql->fetch_assoc()){
+            while ($d = $sql->fetch_assoc()){
                 $data[]=$d;
-			}*/
+			}
 			while($row = mysqli_fetch_array($sql)){
 
 				$data[] = array(
@@ -62,6 +79,7 @@ header('Access-Control-Allow-Origin: *');
         else{
             http_response_code(500);
 		}
+	}
 		exit (json_encode($data));
 	}
 		
