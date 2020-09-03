@@ -17,7 +17,7 @@ export class RegisterPage implements OnInit {
   username: string = "";
   password: string = "";
   confirm_password: string = "";
-  img: Blob;
+  img: string;
   camera: any;
   img1: any;
   isVisible: boolean;

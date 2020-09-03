@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 
+import {Utente} from '../model/utente.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,17 @@ export class UserService {
     return this.http.post(this.server + file, JSON.stringify(body), options)
     .map(res => res.json());
   }
+
+  getUser(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+  }
+
+  
 
   
 }

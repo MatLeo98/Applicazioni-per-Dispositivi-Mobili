@@ -32,30 +32,27 @@ header('Access-Control-Allow-Origin: *');
     }*/
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-        $password = md5($postjson['password']);
-        $query = mysqli_query($mysqli, "SELECT * FROM master_user WHERE username='$postjson[username]' AND password='$password'");
-        $check = mysqli_num_rows($query);
-
-        if($check>0){
-        $data = mysqli_fetch_array($query);
-        $datauser = array(
+      $data = array();
+			$query = mysqli_query($mysqli, "SELECT * FROM master_user WHERE username='$postjson[username]'"); 
+			
+			  while($row = mysqli_fetch_array($query)){
+		
+				  $data[] = array(
             'user_id' => $data['user_id'],
+            'email' => $data['email'],
             'username' => $data['username'],
             'password' => $data['password'],
             'immagine' => $data['immagine'],
-        );
-
-        if($data['status']=='y'){
-            $result = json_encode(array('success'=>true, 'result'=>$datauser));
-        }else{
-            $result = json_encode(array('success'=>false, 'msg'=>'Account Inactive')); 
-        }
-
-        }else{
-        $result = json_encode(array('success'=>false, 'msg'=>'Unregister Account'));
-        }
-
-        echo $result;
+            'status' => $data['status']
+			  );
+			  
+			  
+			  }
+		
+			  if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+			  else $result = json_encode(array('success'=>false));
+		
+			  echo $result;
   }
 	  
 
