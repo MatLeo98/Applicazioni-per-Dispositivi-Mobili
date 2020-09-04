@@ -132,8 +132,8 @@ export class FavouritesPage implements OnInit {
 
 }
 
-delAlbumpref(id){
-  console.log(this.username, id);
+delAlbumpref(username, id){
+  /*console.log(this.username, id);
   let body = {
       aksi : 'delAlbumPref',
       username: this.username,
@@ -145,8 +145,14 @@ delAlbumpref(id){
      var myobj = document.getElementById(id);
     myobj.remove();
      console.log("Preferito Eliminato");
-    });
+    });*/
 
+    this.serviceFavourites.deleteAlbumPref(username, id, 'delalbumpref.php').subscribe(response => {
+      var myobj = document.getElementById(id);
+      myobj.remove();
+      console.log(response);
+     console.log("Preferito Eliminato");
+    });
 }
 
 delBranopref(id_brano){
