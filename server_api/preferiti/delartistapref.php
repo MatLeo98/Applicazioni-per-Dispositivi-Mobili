@@ -3,7 +3,7 @@
 
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Credentials: true");
-  header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+  header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE");
   header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
   header("Content-Type: application/json; charset=utf-8");
 
@@ -22,6 +22,31 @@
       echo $result;
 
   }
+
+  if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    
+
+    $data = array();
+      
+    
+      $username= $mysqli->real_escape_string($_GET['username']);
+      $id = $_GET['id'];
+         $sql= mysqli_query($mysqli,"DELETE FROM artisti_preferiti WHERE username='$username' AND id_artista='$id'");
+         if($sql){
+          $result = 'preferito eliminato';
+           http_response_code(201);
+     
+         }
+         else{
+           $result = 'errore';
+           http_response_code(500);
+         }
+        
+        
+        
+         exit(json_encode($result));
+  
+      }
 
  
 	  

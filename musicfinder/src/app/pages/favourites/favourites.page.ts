@@ -113,8 +113,8 @@ export class FavouritesPage implements OnInit {
 
   }
 
-  delArtistapref(id_artista){
-    console.log(this.username, id_artista);
+  delArtistapref(id){
+    /*console.log(this.username, id_artista);
     let body = {
         aksi : 'delArtistaPref',
         username: this.username,
@@ -125,8 +125,15 @@ export class FavouritesPage implements OnInit {
        // this.ionViewWillEnter();
        /*var list = document.getElementById("mylist");
         list.removeChild(list.childNodes[1]);*/
-      var myobj = document.getElementById(id_artista);
+      /*var myobj = document.getElementById(id_artista);
       myobj.remove();
+       console.log("Preferito Eliminato");
+      });*/
+      console.log(id, this.username);
+      this.serviceFavourites.deleteArtistaPref(this.username, id, 'delartistapref.php').subscribe(response => {
+        var myobj = document.getElementById(id);
+        myobj.remove();
+        console.log(response);
        console.log("Preferito Eliminato");
       });
 
@@ -144,8 +151,8 @@ delAlbumpref(username, id){
     });
 }
 
-delBranopref(id_brano){
-    console.log(this.username, id_brano);
+delBranopref(id){
+    /*console.log(this.username, id_brano);
     let body = {
         aksi : 'delBranoPref',
         username: this.username,
@@ -157,6 +164,13 @@ delBranopref(id_brano){
       var myobj = document.getElementById(id_brano);
       myobj.remove();
       //location.reload(); Ricaricare la pagina
+       console.log("Preferito Eliminato");
+      });*/
+
+      this.serviceFavourites.deleteBranoPref(this.username, id, 'delbranopref.php').subscribe(response => {
+        var myobj = document.getElementById(id);
+        myobj.remove();
+        console.log(response);
        console.log("Preferito Eliminato");
       });
 

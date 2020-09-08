@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import {Album} from '../model/album.model';
+import {Brano} from '../model/brano.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,13 +39,16 @@ export class AlbumService {
 
     }
 
-    getBraniAlbum(body, file){
-      let type = "application/json; charset=UTF-8";
+    getBraniAlbum(id_album, file){
+      /*let type = "application/json; charset=UTF-8";
       let headers = new Headers({ 'Content-Type': type });
       let options = new RequestOptions({ headers: headers });
   
       return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());
+      .map(res => res.json());*/
+
+      return this.httpclient.get<[Brano]>(this.server + file + '?id_album=' + id_album );
+
     }
   
 }

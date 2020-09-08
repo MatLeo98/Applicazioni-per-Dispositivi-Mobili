@@ -48,6 +48,7 @@ export class AlbumPage implements OnInit {
 
   ngOnInit() {
 
+   
     
 
     this.actRoute.params.subscribe((data: any) =>{
@@ -107,9 +108,10 @@ export class AlbumPage implements OnInit {
       console.log(res);
 
       this.items = [];
+       this.getpref();
       this.loadBrani();
 
-      this.getpref();
+      
       this.val_media = 0;
       if(this.check==0){
         this.loadReview();
@@ -121,7 +123,7 @@ export class AlbumPage implements OnInit {
   }
 
   loadBrani(){
-    console.log(this.id_album);
+    /*console.log(this.id_album);
   	return new Promise(resolve => {
   		let body = {
         aksi : 'getbranialbum',
@@ -134,7 +136,11 @@ export class AlbumPage implements OnInit {
   			}
   			resolve(true);
   		});
-  	});
+    });*/
+    
+    this.serviceAlbum.getBraniAlbum(this.id_album, 'branialbum.php').subscribe(response => {
+      this.items = response;
+    });
   }
 
   addpref(){
@@ -181,7 +187,7 @@ export class AlbumPage implements OnInit {
 
   getpref(){
     
-    return new Promise(resolve => {
+    /*return new Promise(resolve => {
   		let body = {
   			aksi : 'getAlbumPref',
   			username: this.username,
@@ -190,7 +196,7 @@ export class AlbumPage implements OnInit {
 
   		this.serviceFavourites.getStarAlbum(body, 'getstaralbum.php').subscribe(data => {
   			for(let customer of data.result){
-          console.log(customer);
+          console.log(this.id_album);
           if(customer.id_album == this.id_album){ 
              (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
           }
@@ -210,7 +216,20 @@ export class AlbumPage implements OnInit {
           else{
             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
           }*/
-  		});
+  		/*});
+    });*/
+
+    this.serviceFavourites.getStarAlbum(this.username, this.id_album, 'getstaralbum.php').subscribe(response => {
+      this.items = response;
+     
+      console.log(response[0].id_album, this.id_album);
+      if(response[0].id_album == this.id_album){ 
+        (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
+     }
+     else{
+       (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
+     }
+    
     });
     
   }

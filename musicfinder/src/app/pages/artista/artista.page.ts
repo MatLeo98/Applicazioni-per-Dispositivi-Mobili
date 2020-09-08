@@ -54,9 +54,10 @@ export class ArtistaPage implements OnInit {
       console.log(res);
 
       this.items = [];
+      this.getpref();
       this.loadAlbums();
 
-      this.getpref();
+      
     });
 
   }
@@ -68,7 +69,7 @@ export class ArtistaPage implements OnInit {
 
   
   loadAlbums(){
-  	return new Promise(resolve => {
+  	/*return new Promise(resolve => {
   		let body = {
         aksi : 'getalbumartista',
         artista_id: this.id_artista,
@@ -80,7 +81,12 @@ export class ArtistaPage implements OnInit {
   			}
   			resolve(true);
   		});
-  	});
+    });*/
+    
+    this.serviceArtista.getAlbumArtista(this.id_artista, 'albumartista.php').subscribe(response => {
+      this.items = response;
+      console.log(this.items);
+    });
   }
 
 
@@ -119,15 +125,10 @@ export class ArtistaPage implements OnInit {
   }
 
   delpref(){
-      console.log(this.username);
-      let body = {
-          aksi : 'delArtistaPref',
-          username: this.username,
-          id_artista: this.id_artista,
-        };
-  
-        this.serviceFavourites.deleteArtistaPref(body, 'delartistapref.php').subscribe(data => {
-         // this.ionViewWillEnter();
+      
+
+        this.serviceFavourites.deleteArtistaPref(this.username, this.id_artista, 'delartistapref.php').subscribe(response => {
+          console.log(response);
          console.log("Preferito Eliminato");
         });
   
@@ -135,7 +136,7 @@ export class ArtistaPage implements OnInit {
 
   getpref(){
     
-    return new Promise(resolve => {
+   /* return new Promise(resolve => {
   		let body = {
   			aksi : 'getArtistaPref',
   			username: this.username,
@@ -164,7 +165,20 @@ export class ArtistaPage implements OnInit {
           else{
             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
           }*/
-  		});
+  		/*});
+    });*/
+
+    this.serviceFavourites.getStarArtista(this.username, this.id_artista, 'getstarartista.php').subscribe(response => {
+      this.items = response;
+     console.log(this.items);
+      console.log(response[0].id_artista, this.id_artista);
+      if(response[0].id_artista == this.id_artista){ 
+        (<HTMLInputElement>document.getElementById("stariconartist")).name = "star";
+     }
+     else{
+       (<HTMLInputElement>document.getElementById("stariconartist")).name = "star-outline";
+     }
+    
     });
     
   }

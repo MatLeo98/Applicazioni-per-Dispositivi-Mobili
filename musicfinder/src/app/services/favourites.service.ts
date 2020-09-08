@@ -69,13 +69,16 @@ export class FavouritesService {
     .map(res => res.json());
   }
 
-  deleteArtistaPref(body, file){
-    let type = "application/json; charset=UTF-8";
+  deleteArtistaPref(username, id, file){
+    /*let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    .map(res => res.json());*/
+
+    return this.httpclient.delete(this.server + file + '?id=' + id + '&username=' + username);
+
 
     //return this.httpclient.delete(this.server + file + '?id=' + id);
   }
@@ -100,46 +103,55 @@ export class FavouritesService {
 
 
 
-  deleteBranoPref(body, file){
-    let type = "application/json; charset=UTF-8";
+  deleteBranoPref(username, id, file){
+    /*let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    .map(res => res.json());*/
+
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+    return this.httpclient.delete(this.server + file + '?id=' + id + '&username=' + username);
+
+  }
+
+  getStarArtista(username, id_artista, file){
+    /*let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());*/
+
+    return this.httpclient.get(this.server + file + '?id_artista=' + id_artista + '&username=' + username);
+
 
     //return this.httpclient.delete(this.server + file + '?id=' + id);
   }
 
-  getStarArtista(body, file){
-    let type = "application/json; charset=UTF-8";
+  getStarAlbum(username, id_album, file){
+    /*let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    .map(res => res.json());*/
 
     //return this.httpclient.delete(this.server + file + '?id=' + id);
+    return this.httpclient.get(this.server + file + '?id_album=' + id_album + '&username=' + username);
+
   }
 
-  getStarAlbum(body, file){
-    let type = "application/json; charset=UTF-8";
+  getStarBrano(username, id_brano, file){
+    /*let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    .map(res => res.json());*/
 
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
-  }
-
-  getStarBrano(body, file){
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.get(this.server + file + '?id_brano=' + id_brano + '&username=' + username);
 
     //return this.httpclient.delete(this.server + file + '?id=' + id);
   }
