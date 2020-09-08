@@ -11,12 +11,17 @@
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $username= $mysqli->real_escape_string($_GET['username']);
         $data = array();
-        $query = mysqli_query($mysqli, "SELECT brani_preferiti.username, brano.id_brano, brano.id_album, brano.youtube, album.titolo AS titalb, album.genere, album.immagine, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, artista.nome FROM brani_preferiti, brano, album, artista WHERE brano.id_brano = brani_preferiti.id_brano AND album.id_album = brano.id_album AND album.id_artista = artista.id_artista AND username='$postjson[username]'");
+		$sql = mysqli_query($mysqli, "SELECT brani_preferiti.username, brano.id_brano, brano.id_album, brano.youtube, album.titolo AS titalb, album.genere, album.immagine, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, artista.nome FROM brani_preferiti, brano, album, artista WHERE brano.id_brano = brani_preferiti.id_brano AND album.id_album = brano.id_album AND album.id_artista = artista.id_artista AND username='$username'");
+		
+		if($sql){
 
-	while($row = mysqli_fetch_array($query)){
+			while ($d = $sql->fetch_assoc()){
+				$data[]=$d;}
+
+	while($row = mysqli_fetch_array($sql)){
 
 		$data[] = array(
             'username' => $row['username'],
@@ -36,11 +41,14 @@
 		);
 	}
 
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-	else $result = json_encode(array('success'=>false));
+	http_response_code(201);
 
-	echo $result;
-
-  }
+        }
+        else{
+            http_response_code(500);
+		}
+	
+		exit (json_encode($data));
+	}
 	  
 

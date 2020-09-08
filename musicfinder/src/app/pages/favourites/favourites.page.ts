@@ -178,73 +178,27 @@ delBranopref(id){
 
 
   getArtistiPref(){
-   
-  	return new Promise(resolve => {
-    
-  		let body = {
-        aksi : 'getArtistiPref',
-        username: this.username,
-       
-      };
       
-
-  		this.serviceFavourites.getArtistiPreferiti(body, 'artistipref.php').subscribe(data => {
-  		/*	for(let favourite of data.result){
-  				this.favourites.push(favourite);
-        }*/
-        this.favourites = data.result;
-        console.log(data.result);
-        console.log(this.favourites);
-  			resolve(true);
-  		});
-  	});
+  		this.serviceFavourites.getArtistiPreferiti(this.username, 'artistipref.php').subscribe(response => {
+        this.favourites = response;
+    });
+    
   }
 
   getAlbumsPref(){
-   console.log(this.username);
-  	return new Promise(resolve => {
-    
-  		let body = {
-        aksi : 'getAlbumsPref',
-        username: this.username,
-       
-      };
-      
 
-  		this.serviceFavourites.getAlbumsPreferiti(body, 'albumspref.php').subscribe(data => {
-  			/*for(let favourite of data.result){
-  				this.favourites.push(favourite);
-        }*/
-        this.favourites = data.result;
-        console.log(data.result);
-        console.log(this.favourites);
-  			resolve(true);
-  		});
-  	});
+    this.serviceFavourites.getAlbumsPreferiti(this.username, 'albumspref.php').subscribe(response => {
+      this.favourites = response;
+  });
+
   }
 
 
   getBraniPref(){
-    console.log(this.username);
-     return new Promise(resolve => {
-     
-       let body = {
-         aksi : 'getBraniPref',
-         username: this.username,
-        
-       };
-       
- 
-       this.serviceFavourites.getBraniPreferiti(body, 'branipref.php').subscribe(data => {
-       /*	for(let favourite of data.result){
-           this.favourites.push(favourite);
-         }*/
-         this.favourites = data.result;
-         console.log(data.result);
-         console.log(this.favourites);
-         resolve(true);
-       });
-     });
+
+    this.serviceFavourites.getBraniPreferiti(this.username, 'branipref.php').subscribe(response => {
+      this.favourites = response;
+  });
    }
 
 }

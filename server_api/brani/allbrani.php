@@ -11,26 +11,31 @@ header('Access-Control-Allow-Origin: *');
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
-/*if($postjson['aksi']=='getartista'){
-	$data = array();
-	$query = mysqli_query($mysqli, "SELECT * FROM artista");
-
-	while($row = mysqli_fetch_array($query)){
-
-		$data[] = array(
-	    'id_artista' => $row['id_artista'],
-	  'nome' => $row['nome'],
-	  'storia' => $row['storia'],
-	  'immart' => $row['immart'],
-		);
-  }
-
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-	else $result = json_encode(array('success'=>false));
-
-    echo $result;
-    }*/
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+		$data = array();
+		if(isset($_GET['event'])){
+			$event= $mysqli->real_escape_string($_GET['event']);
+			$result = $event;
+			$sql= mysqli_query($mysqli, "SELECT  brano.id_brano, brano.id_album, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, brano.youtube,
+			album.id_album, album.id_artista, album.titolo AS titalb, album.genere, album.immagine, artista.nome
+			FROM brano JOIN album ON brano.id_album = album.id_album JOIN artista ON artista.id_artista = album.id_artista WHERE brano.titolo LIKE '%$event%'");
+			
+			if($sql){
+				
+				while ($d = $sql->fetch_assoc()){
+					$data[]=$d;
+				}
+				http_response_code(201);
+	
+			}
+			else{
+				
+				http_response_code(500);
+			}
+		   
+		   }else{
+
     	$data = array();
    
 		$sql = mysqli_query($mysqli, "SELECT  brano.id_brano, brano.id_album, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, brano.youtube,
@@ -67,11 +72,12 @@ header('Access-Control-Allow-Origin: *');
         else{
             http_response_code(500);
         }
+	}
 
         exit (json_encode($data));
 	  }
 	  
-	  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	  /* if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	  
 		$data = array();
 		$query = mysqli_query($mysqli, "SELECT  brano.id_brano, brano.id_album, brano.titolo, brano.durata, brano.valutazione_media, brano.descrizione, brano.testo, brano.youtube,
@@ -104,5 +110,5 @@ header('Access-Control-Allow-Origin: *');
 	
 		  echo $result;
 	
-	  }
+	  } */
 

@@ -209,42 +209,19 @@ export class ResultsPage implements OnInit {
   }
 
   searchArtisti(){
-   
-  	return new Promise(resolve => {
-    
-  		let body = {
-  			//aksi : 'searchartisti',
-        event : this.event,
-      };
-      
 
-  		this.serviceArtista.searchArtisti(body, 'allartisti.php').subscribe(data => {
-  			for(let customer of data.result){
-  				this.items.push(customer);
-        }
-        
-  			resolve(true);
-  		});
-  	});
+  		this.serviceArtista.searchArtisti(this.event, 'allartisti.php').subscribe(response => {
+        this.items = response;
+    });
+    
   }
 
   searchBrani(){
-   
-  	return new Promise(resolve => {
-    
-  		let body = {
-  			//aksi : 'searchbrani',
-        event : this.event,
-      };
-      
 
-  		this.serviceSong.searchBrani(body, 'allbrani.php').subscribe(data => {
-  			for(let customer of data.result){
-  				this.items.push(customer);
-  			}
-  			resolve(true);
-  		});
-  	});
+  		this.serviceSong.searchBrani(this.event, 'allbrani.php').subscribe(response => {
+        this.items = response;
+    });
+    
   }
 
 

@@ -11,12 +11,17 @@
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $id_brano = $mysqli->real_escape_string($_GET['id_brano']);
         $data = array();
-        $query = mysqli_query($mysqli, "SELECT * FROM recensione_brano WHERE id_brano='$postjson[id_brano]'");
+        $sql = mysqli_query($mysqli, "SELECT * FROM recensione_brano WHERE id_brano = '$id_brano'");
 
-	while($row = mysqli_fetch_array($query)){
+  if($sql){
+
+    while ($d = $sql->fetch_assoc()){
+      $data[]=$d;}
+
+	while($row = mysqli_fetch_array($sql)){
 
 		$data[] = array(
         'id' => $row['id'],
@@ -29,11 +34,12 @@
 		);
 	}
 
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-	else $result = json_encode(array('success'=>false));
+  http_response_code(201);
 
-	echo $result;
+}
+else{
+    http_response_code(500);
+}
 
-  }
-	  
-
+exit (json_encode($data));
+}
