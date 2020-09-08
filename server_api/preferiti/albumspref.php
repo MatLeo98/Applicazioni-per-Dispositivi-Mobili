@@ -1,6 +1,5 @@
 <?php
 
-
   header('Access-Control-Allow-Origin: *');
   header("Access-Control-Allow-Credentials: true");
   header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -12,12 +11,17 @@
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $username= $mysqli->real_escape_string($_GET['username']);
         $data = array();
-        $query = mysqli_query($mysqli, "SELECT album_preferiti.username, album.id_album, album.titolo, album.anno, album.genere, album.immagine, album.valutazione_media, album.descrizione, artista.id_artista, artista.nome FROM album_preferiti, album, artista WHERE album.id_album = album_preferiti.id_album  AND album.id_artista = artista.id_artista AND album_preferiti.username='$postjson[username]'");
+        $sql = mysqli_query($mysqli, "SELECT album_preferiti.username, album.id_album, album.titolo, album.anno, album.genere, album.immagine, album.valutazione_media, album.descrizione, artista.id_artista, artista.nome FROM album_preferiti, album, artista WHERE album.id_album = album_preferiti.id_album  AND album.id_artista = artista.id_artista AND album_preferiti.username='$username'");
 
-	while($row = mysqli_fetch_array($query)){
+        if($sql){
+
+          while ($d = $sql->fetch_assoc()){
+            $data[]=$d;}
+
+	        while($row = mysqli_fetch_array($sql)){
 
 		$data[] = array(
             'username' => $row['username'],
@@ -34,11 +38,12 @@
 		);
 	}
 
-	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-	else $result = json_encode(array('success'=>false));
+	http_response_code(201);
 
-	echo $result;
-
-  }
-	  
-
+        }
+        else{
+            http_response_code(500);
+		}
+	
+		exit (json_encode($data));
+	}

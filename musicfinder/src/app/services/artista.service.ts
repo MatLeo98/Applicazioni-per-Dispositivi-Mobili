@@ -26,13 +26,10 @@ export class ArtistaService {
      return this.httpclient.get<[Artista]>(this.server + file);
     }
 
-    searchArtisti(body, file){
-      let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());
+    searchArtisti(event, file){
+
+      return this.httpclient.get<[Artista]>(this.server + file + '?event=' + event );
+      
     }
 
     getAlbumArtista(body, file){

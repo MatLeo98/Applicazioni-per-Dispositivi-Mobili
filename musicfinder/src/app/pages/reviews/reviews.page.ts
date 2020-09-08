@@ -118,22 +118,11 @@ ngOnInit() {
   }*/
 
   loadReview(){
-  	
- 
-  return new Promise(resolve => {
-    let body = {
-      aksi : 'getreviews',
-      album_id : this.id,
-    };
 
-    this.serviceReviews.getRecensioniAlbum(body, 'recensionialbum.php').subscribe(data => {
-      for(let review of data.result){
-        this.reviews.push(review);
-      }
-      resolve(true);
-      console.log('OK');
+    this.serviceReviews.getRecensioniAlbum(this.id, 'recensionialbum.php').subscribe(response => {
+    this.reviews = response;
     });
-  });
+ 
 }
 
 addreview(id, id_brano){
@@ -146,21 +135,9 @@ addreview(id, id_brano){
 
 loadReviewsBrani(){
   	
- 
-  return new Promise(resolve => {
-    let body = {
-      aksi : 'getReviewsBrani',
-      id_brano : this.id_brano,
-    };
-
-    this.serviceReviews.getRecensioniBrani(body, 'recensionibrani.php').subscribe(data => {
-      for(let review of data.result){
-        this.reviews.push(review);
-      }
-      resolve(true);
-      console.log('OK');
+  this.serviceReviews.getRecensioniBrani(this.id_brano, 'recensionibrani.php').subscribe(response => {
+    this.reviews = response;
     });
-  });
 }
 
 addReviewBrano(id_brano){
