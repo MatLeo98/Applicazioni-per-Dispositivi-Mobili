@@ -133,19 +133,8 @@ export class FavouritesPage implements OnInit {
 }
 
 delAlbumpref(username, id){
-  /*console.log(this.username, id);
-  let body = {
-      aksi : 'delAlbumPref',
-      username: this.username,
-      id_album: id,
-    };
 
-    this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
-     // this.ionViewWillEnter();
-     var myobj = document.getElementById(id);
-    myobj.remove();
-     console.log("Preferito Eliminato");
-    });*/
+  
 
     this.serviceFavourites.deleteAlbumPref(username, id, 'delalbumpref.php').subscribe(response => {
       var myobj = document.getElementById(id);

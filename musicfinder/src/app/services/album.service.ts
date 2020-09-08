@@ -33,7 +33,7 @@ export class AlbumService {
   
       return this.http.post(this.server + file, JSON.stringify(body), options)
       .map(res => res.json());*/
-      return this.httpclient.get(this.server + file + '?event=' + event );
+      return this.httpclient.get<[Album]>(this.server + file + '?event=' + event );
 
     }
 

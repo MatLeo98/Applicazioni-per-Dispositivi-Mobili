@@ -156,7 +156,7 @@ export class AlbumPage implements OnInit {
   }
 
   delpref(){
-      console.log(this.username);
+      /*console.log(this.username);
       let body = {
           aksi : 'delAlbumPref',
           username: this.username,
@@ -166,24 +166,16 @@ export class AlbumPage implements OnInit {
         this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
          // this.ionViewWillEnter();
          console.log("Preferito Eliminato");
+        });*/
+
+        this.serviceFavourites.deleteAlbumPref(this.username, this.id_album, 'delalbumpref.php').subscribe(response => {
+          console.log(response);
+         console.log("Preferito Eliminato");
         });
   
   }
 
-  /*delpref(){
-    console.log(this.id_album);
-    let body = {
-        aksi : 'delAlbumPref',
-        username: this.username,
-        id_album: this.id_album,
-      };
-
-      this.serviceFavourites.deleteAlbumPref(body, 'addalbumpref.php', this.id_album).subscribe(data => {
-       // this.ionViewWillEnter();
-       console.log("Preferito Eliminato");
-      });
-
-}*/
+ 
 
 
 

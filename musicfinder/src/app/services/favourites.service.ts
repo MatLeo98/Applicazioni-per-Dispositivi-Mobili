@@ -92,7 +92,7 @@ export class FavouritesService {
 
   }*/
 
-  deleteAlbumPref(username: string, id: number, file: string){
+  deleteAlbumPref(username, id, file){
 
     return this.httpclient.delete(this.server + file + '?id=' + id + '&username=' + username);
 
