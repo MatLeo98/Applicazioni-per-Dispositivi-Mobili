@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import {Artista} from '../model/artista.model';
+import {Album} from '../model/album.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,13 +34,15 @@ export class ArtistaService {
       
     }
 
-    getAlbumArtista(body, file){
-      let type = "application/json; charset=UTF-8";
+    getAlbumArtista(id_artista, file){
+     /* let type = "application/json; charset=UTF-8";
       let headers = new Headers({ 'Content-Type': type });
       let options = new RequestOptions({ headers: headers });
   
       return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());
+      .map(res => res.json());*/
+      return this.httpclient.get<[Album]>(this.server + file + '?id_artista=' + id_artista );
+
     }
   
 }

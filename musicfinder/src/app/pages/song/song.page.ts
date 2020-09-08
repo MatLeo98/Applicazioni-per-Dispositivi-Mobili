@@ -71,10 +71,10 @@ export class SongPage implements OnInit {
       this.user_id = this.anggota.user_id;
       this.username = this.anggota.username;
       console.log(res);
-
+      this.getpref();
       this.items = [];
 
-      this.getpref();
+      
       this.val_media = 0;
       if(this.check==0){
         this.loadReview();
@@ -127,7 +127,7 @@ export class SongPage implements OnInit {
   }
 
   delpref(){
-      console.log(this.username);
+      /*console.log(this.username);
       let body = {
           aksi : 'delBranoPref',
           username: this.username,
@@ -137,13 +137,17 @@ export class SongPage implements OnInit {
         this.serviceFavourites.deleteBranoPref(body, 'delbranopref.php').subscribe(data => {
          // this.ionViewWillEnter();
          console.log("Preferito Eliminato");
+        });*/
+        this.serviceFavourites.deleteBranoPref(this.username, this.id_brano, 'delbranopref.php').subscribe(response => {
+          console.log(response);
+         console.log("Preferito Eliminato");
         });
   
   }
 
   getpref(){
     
-    return new Promise(resolve => {
+   /* return new Promise(resolve => {
   		let body = {
   			aksi : 'getBranoPref',
   			username: this.username,
@@ -172,7 +176,20 @@ export class SongPage implements OnInit {
           else{
             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
           }*/
-  		});
+  	/*	});
+    });*/
+
+    this.serviceFavourites.getStarBrano(this.username, this.id_brano, 'getstarbrano.php').subscribe(response => {
+      this.items = response;
+     console.log(this.items);
+      console.log(response[0].id_brano, this.id_brano);
+      if(response[0].id_brano == this.id_brano){ 
+        (<HTMLInputElement>document.getElementById("stariconsong")).name = "star";
+     }
+     else{
+       (<HTMLInputElement>document.getElementById("stariconsong")).name = "star-outline";
+     }
+    
     });
     
   }

@@ -83,35 +83,7 @@ header('Access-Control-Allow-Origin: *');
 		exit (json_encode($data));
 	}
 		
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	  
-			$data = array();
-			$query = mysqli_query($mysqli, "SELECT * FROM album JOIN artista ON album.id_artista = artista.id_artista WHERE titolo LIKE '%$postjson[event]%'"); //SELECT * FROM album WHERE titolo LIKE '%$postjson[event]%' 
-			
-			  while($row = mysqli_fetch_array($query)){
 		
-				  $data[] = array(
-					'id_album' => $row['id_album'],
-					'id_artista' => $row['id_artista'],
-					'titolo' => $row['titolo'],
-					'anno' => $row['anno'],
-					'genere' => $row['genere'],
-					'immagine' => $row['immagine'],
-					'valutazione_media' => $row['valutazione_media'],
-					'descrizione' => $row['descrizione'],
-					'nome' => $row['nome'],
-		
-			  );
-			  
-			  
-			  }
-		
-			  if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-			  else $result = json_encode(array('success'=>false));
-		
-			  echo $result;
-		
-		  }
 	  
 
        
