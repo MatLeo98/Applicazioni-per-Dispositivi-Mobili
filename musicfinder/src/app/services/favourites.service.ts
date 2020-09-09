@@ -62,30 +62,11 @@ export class FavouritesService {
   }
 
   deleteArtistaPref(username, id, file){
-    /*let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());*/
 
     return this.httpclient.delete(this.server + file + '?id=' + id + '&username=' + username);
 
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
   }
 
-  /*deleteAlbumPref(body, file){
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id + '?username=' +username);
-
-  }*/
 
   deleteAlbumPref(username, id, file){
 
@@ -96,14 +77,7 @@ export class FavouritesService {
 
 
   deleteBranoPref(username, id, file){
-    /*let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());*/
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
+ 
     return this.httpclient.delete(this.server + file + '?id=' + id + '&username=' + username);
 
   }
@@ -119,6 +93,7 @@ export class FavouritesService {
   }
 
   getStarAlbum(body, file){
+    
     let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
@@ -126,12 +101,11 @@ export class FavouritesService {
     return this.http.post(this.server + file, JSON.stringify(body), options)
     .map(res => res.json());
 
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
-    //return this.httpclient.get(this.server + file + '?id_album=' + id_album + '&username=' + username);
 
   }
 
   getStarBrano(body, file){
+
     let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
@@ -139,9 +113,6 @@ export class FavouritesService {
     return this.http.post(this.server + file, JSON.stringify(body), options)
     .map(res => res.json());
 
-    //return this.httpclient.get(this.server + file + '?id_brano=' + id_brano + '&username=' + username);
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
   }
 
 

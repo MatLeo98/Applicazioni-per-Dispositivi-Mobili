@@ -19,13 +19,9 @@ export class ArtistaService {
 
   
     getArtisti(file){
-      let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      /*return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
+     
      return this.httpclient.get<[Artista]>(this.server + file);
+
     }
 
     searchArtisti(event, file){
@@ -35,12 +31,7 @@ export class ArtistaService {
     }
 
     getAlbumArtista(id_artista, file){
-     /* let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
+     
       return this.httpclient.get<[Album]>(this.server + file + '?id_artista=' + id_artista );
 
     }
