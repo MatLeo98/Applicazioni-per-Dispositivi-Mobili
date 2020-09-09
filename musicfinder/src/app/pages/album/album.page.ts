@@ -75,6 +75,8 @@ export class AlbumPage implements OnInit {
 
   btnClicked(){
 
+    if(this.username != undefined){
+
     
 
     if((<HTMLInputElement>document.getElementById("stariconalbum")).name == "star-outline"){
@@ -90,6 +92,9 @@ export class AlbumPage implements OnInit {
       this.delpref();
      
     }
+  }else{
+    this.router.navigate(['/login']);
+  }
 
   }
 
@@ -109,8 +114,12 @@ export class AlbumPage implements OnInit {
       this.username = this.anggota.username;
       console.log(res);
 
-      this.items = [];
-       this.getpref();
+
+      this.getpref();
+
+    });console.log(this.username);
+  
+    this.items = [];
       this.loadBrani();
 
       
@@ -119,9 +128,7 @@ export class AlbumPage implements OnInit {
         this.loadReview();
         this.check++;
       }else{this.Val_media();}
-
-    });
-
+    
   }
 
   loadBrani(){

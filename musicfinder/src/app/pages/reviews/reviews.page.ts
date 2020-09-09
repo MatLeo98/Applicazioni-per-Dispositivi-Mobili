@@ -30,6 +30,10 @@ export class ReviewsPage implements OnInit{
   id_brano: number = 0;
   brani: string;
 
+  anggota: any;
+  username: string;
+  user_id: number;
+
 constructor(private platform:Platform, 	private router: Router,
   private storage: Storage,
   public toastCtrl: ToastController,
@@ -57,6 +61,13 @@ ngOnInit() {
 
   ionViewWillEnter(){
 
+    this.storage.get('session_storage').then((res)=>{
+      this.anggota = res;
+      this.user_id = this.anggota.user_id;
+      this.username = this.anggota.username;
+      console.log(res);
+    });
+
   	this.reviews = [];
     this.start = 0;
     
@@ -77,11 +88,15 @@ ngOnInit() {
 }
 
 addreview(id, id_brano){
+  if(this.username != undefined){
   console.log(id, id_brano);
     if(id != undefined)
       this.router.navigate(['/tabs/addreview/album/' + id ]);
     if(id_brano != undefined)
       this.router.navigate(['/tabs/addreview/brano/' + id_brano ]);
+  }else{
+    this.router.navigate(['/login']);
+  }
 }
 
 loadReviewsBrani(){

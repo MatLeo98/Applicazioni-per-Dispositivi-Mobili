@@ -75,6 +75,11 @@ export class SongPage implements OnInit {
       this.username = this.anggota.username;
       console.log(res);
       this.getpref();
+
+    
+    });
+
+    
       this.items = [];
 
       
@@ -83,11 +88,14 @@ export class SongPage implements OnInit {
         this.loadReview();
         this.check++;
       }else{this.Val_media();}
-    });
+
+
 
   }
 
   btnClicked(){
+
+    if(this.username != undefined){
 
     if((<HTMLInputElement>document.getElementById("stariconsong")).name == "star-outline"){
 
@@ -99,6 +107,9 @@ export class SongPage implements OnInit {
       (<HTMLInputElement>document.getElementById("stariconsong")).name = "star-outline";
       this.delpref();
     }
+  }else{
+    this.router.navigate(['/login']);
+  }
     
   }
 

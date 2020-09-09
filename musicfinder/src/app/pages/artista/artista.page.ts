@@ -26,6 +26,7 @@ export class ArtistaPage implements OnInit {
   username: string;
   user_id: number;
   y: number;
+  res: any;
   
 
   
@@ -56,13 +57,18 @@ export class ArtistaPage implements OnInit {
       this.username = this.anggota.username;
       console.log(res);
 
-      this.items = [];
+      
       this.getpref();
-      this.loadAlbums();
+     
 
       
     });
-
+   
+   
+    this.items = [];
+    
+    this.loadAlbums();
+    
   }
 
 
@@ -81,16 +87,21 @@ export class ArtistaPage implements OnInit {
 
 
   btnClicked(){
+
+    if(this.username != undefined){
  
-    if((<HTMLInputElement>document.getElementById("stariconartist")).name == "star-outline"){
- 
-      (<HTMLInputElement>document.getElementById("stariconartist")).name = "star";
-      this.addpref();
- 
+      if((<HTMLInputElement>document.getElementById("stariconartist")).name == "star-outline"){
+  
+        (<HTMLInputElement>document.getElementById("stariconartist")).name = "star";
+        this.addpref();
+  
+      }else{
+  
+        (<HTMLInputElement>document.getElementById("stariconartist")).name = "star-outline";
+        this.delpref();
+      }
     }else{
- 
-      (<HTMLInputElement>document.getElementById("stariconartist")).name = "star-outline";
-      this.delpref();
+      this.router.navigate(['/login']);
     }
     
   }
