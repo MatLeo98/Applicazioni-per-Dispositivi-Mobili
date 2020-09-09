@@ -33,28 +33,7 @@
       echo $result;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-	$data = array();
-	
-     $id_album= $mysqli->real_escape_string($_GET['id_album']);
-     $username= $mysqli->real_escape_string($_GET['username']);
-
-		 $sql= mysqli_query($mysqli,"SELECT * FROM album_preferiti WHERE id_album='$id_album' AND username='$username'");
-		 if($sql){
-			 while ($d = $sql->fetch_assoc()){
-				 $data[]=$d;
-			 }
-			 http_response_code(201);
- 
-		 }
-		 else{
-			 http_response_code(500);
-		 }
-		
-		
-	exit (json_encode($data));
-}
 
   
 	  

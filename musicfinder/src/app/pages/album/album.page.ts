@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PostProvider } from '../../../providers/post-provider';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { Location } from "@angular/common";
+import { ReviewsService } from 'src/app/services/reviews.service';
 
 
 @Component({
@@ -35,14 +35,16 @@ export class AlbumPage implements OnInit {
 
   check: number = 0;
   y: number;
- // i: number;
+ 
   
 
-  constructor(private router: Router, private postPvdr: PostProvider,
-    private actRoute: ActivatedRoute, private storage: Storage,
+  constructor(private router: Router,
+    private actRoute: ActivatedRoute,
+    private storage: Storage,
     private serviceFavourites: FavouritesService,
     private serviceAlbum: AlbumService,
-    private location: Location
+    private location: Location,
+    private serviceReviews: ReviewsService
     ) {
 
 
@@ -66,8 +68,6 @@ export class AlbumPage implements OnInit {
       this.y = data.y;
       
       console.log(data);
-
-      //this.ionViewWillEnter();
      
      
     });
@@ -125,20 +125,6 @@ export class AlbumPage implements OnInit {
   }
 
   loadBrani(){
-    /*console.log(this.id_album);
-  	return new Promise(resolve => {
-  		let body = {
-        aksi : 'getbranialbum',
-        album_id : this.id_album, 
-  		};
-
-  		this.serviceAlbum.getBraniAlbum(body, 'branialbum.php').subscribe(data => {
-  			for(let brano of data.result){
-  				this.items.push(brano);
-  			}
-  			resolve(true);
-  		});
-    });*/
     
     this.serviceAlbum.getBraniAlbum(this.id_album, 'branialbum.php').subscribe(response => {
       this.items = response;
@@ -156,7 +142,6 @@ export class AlbumPage implements OnInit {
   		};
 
   		this.serviceFavourites.addAlbumPref(body, 'addalbumpref.php').subscribe(data => {
-  			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
   			console.log('Preferito Aggiunto');
   		});
   	});
@@ -207,7 +192,7 @@ export class AlbumPage implements OnInit {
   loadReview(){
   	
  
-    return new Promise(resolve => {
+    /*return new Promise(resolve => {
       let body = {
         aksi : 'getreviews',
         album_id : this.id_album,
@@ -222,9 +207,14 @@ export class AlbumPage implements OnInit {
         resolve(true);
         this.Val_media();
         console.log('OK');
-      });
+      });*/
+
+      this.serviceReviews.getRecensioniAlbum(this.id_album, 'recensionialbum.php').subscribe(response => {
+        this.dati = response;
+        this.Val_media();
+        });
       
-    });
+    //});
 
     
 

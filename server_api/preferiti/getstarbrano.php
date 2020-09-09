@@ -33,28 +33,7 @@
 	echo $result;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-	$data = array();
-	
-     $id_brano= $mysqli->real_escape_string($_GET['id_brano']);
-     $username= $mysqli->real_escape_string($_GET['username']);
-
-		 $sql= mysqli_query($mysqli,"SELECT * FROM brani_preferiti WHERE id_brano='$id_brano' AND username='$username'");
-		 if($sql){
-			 while ($d = $sql->fetch_assoc()){
-				 $data[]=$d;
-			 }
-			 http_response_code(201);
- 
-		 }
-		 else{
-			 http_response_code(500);
-		 }
-		
-		
-	exit (json_encode($data));
-}
 
   
 	  

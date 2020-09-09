@@ -72,19 +72,6 @@ export class ArtistaPage implements OnInit {
 
   
   loadAlbums(){
-  	/*return new Promise(resolve => {
-  		let body = {
-        aksi : 'getalbumartista',
-        artista_id: this.id_artista,
-  		};
-
-  		this.serviceArtista.getAlbumArtista(body, 'albumartista.php').subscribe(data => {
-  			for(let album of data.result){
-  				this.items.push(album);
-  			}
-  			resolve(true);
-  		});
-    });*/
     
     this.serviceArtista.getAlbumArtista(this.id_artista, 'albumartista.php').subscribe(response => {
       this.items = response;
@@ -125,7 +112,6 @@ export class ArtistaPage implements OnInit {
   		};
 
   		this.serviceFavourites.addArtistaPref(body, 'addartistapref.php').subscribe(data => {
-  			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
   			console.log('Preferito Aggiunto');
   		});
   	});

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { PostProvider } from '../../../providers/post-provider';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
-/* import { url } from 'inspector'; */
+
 
 @Component({
   selector: 'app-favourites',
@@ -17,26 +17,7 @@ export class FavouritesPage implements OnInit {
   user_id: number;
   favourites: any = [];
 
- /* artisti = [
 
-    {id: 1, name: 'Thom Yorke', type: 'Artista'},
-    {id: 2, name: 'Radiohead', type: 'Artista'},
-
-  ];
-
-  album = [
-
-    {id: 3, name: 'Kid A', artist: 'Radiohead', year: '2000', type: 'Album'},
-    {id: 4, name: 'Anima', artist: 'Thom Yorke', year: '2019', type: 'Album'},
-
-  ];
-
-  brani = [
-
-    {id: 5, name: 'Optimistic', artist: 'Radiohead', year: '2000', type: 'Brano'},
-    {id: 6, name: 'Traffic', artist: 'Thom  Yorke', year: '2019', type: 'Brano'},
-
-  ];*/
 
   filt : number;
 
@@ -114,21 +95,7 @@ export class FavouritesPage implements OnInit {
   }
 
   delArtistapref(id){
-    /*console.log(this.username, id_artista);
-    let body = {
-        aksi : 'delArtistaPref',
-        username: this.username,
-        id_artista: id_artista,
-      };
-
-      this.serviceFavourites.deleteArtistaPref(body, 'delartistapref.php').subscribe(data => {
-       // this.ionViewWillEnter();
-       /*var list = document.getElementById("mylist");
-        list.removeChild(list.childNodes[1]);*/
-      /*var myobj = document.getElementById(id_artista);
-      myobj.remove();
-       console.log("Preferito Eliminato");
-      });*/
+   
       console.log(id, this.username);
       this.serviceFavourites.deleteArtistaPref(this.username, id, 'delartistapref.php').subscribe(response => {
         var myobj = document.getElementById(id);
@@ -152,20 +119,7 @@ delAlbumpref(username, id){
 }
 
 delBranopref(id){
-    /*console.log(this.username, id_brano);
-    let body = {
-        aksi : 'delBranoPref',
-        username: this.username,
-        id_brano: id_brano,
-      };
-
-      this.serviceFavourites.deleteBranoPref(body, 'delbranopref.php').subscribe(data => {
-       // this.ionViewWillEnter();
-      var myobj = document.getElementById(id_brano);
-      myobj.remove();
-      //location.reload(); Ricaricare la pagina
-       console.log("Preferito Eliminato");
-      });*/
+   
 
       this.serviceFavourites.deleteBranoPref(this.username, id, 'delbranopref.php').subscribe(response => {
         var myobj = document.getElementById(id);

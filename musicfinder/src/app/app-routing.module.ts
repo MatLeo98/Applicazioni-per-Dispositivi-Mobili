@@ -14,10 +14,7 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
-  {
-    path: 'customer',
-    loadChildren: () => import('./pages/customer/customer.module').then( m => m.CustomerPageModule)
-  },
+  
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
@@ -49,10 +46,6 @@ const routes: Routes = [
   {
     path: 'song',
     loadChildren: () => import('./pages/song/song.module').then( m => m.SongPageModule)
-  },
-  {
-    path: 'filter',
-    loadChildren: () => import('./pages/filter/filter.module').then( m => m.FilterPageModule)
   },
   {
     path: 'results',

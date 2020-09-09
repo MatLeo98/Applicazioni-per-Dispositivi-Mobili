@@ -1,7 +1,6 @@
 import { Component, ViewChild , OnInit} from '@angular/core';
 import {Platform,IonInfiniteScroll} from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { ReviewsService } from 'src/app/services/reviews.service';
@@ -44,7 +43,6 @@ export class ReviewsPage implements OnInit{
   //       }
 
 constructor(private platform:Platform, 	private router: Router,
-  private postPvdr: PostProvider,
   private storage: Storage,
   public toastCtrl: ToastController,
   private actRoute: ActivatedRoute,

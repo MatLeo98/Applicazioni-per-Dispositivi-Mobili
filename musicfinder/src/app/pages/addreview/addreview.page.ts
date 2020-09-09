@@ -39,9 +39,7 @@ export class AddreviewPage implements OnInit {
     this.actRoute.params.subscribe((data: any) =>{
       this.id = data.id;
       this.id_brano = data.id_brano;
-      /*this.titolo = data.titolo;
-      this.valutazione = data.valutazione;
-      this.testo = data.testo;*/
+      
       console.log(this.id, this.id_brano);
   		console.log(data);
   	});
@@ -71,7 +69,6 @@ export class AddreviewPage implements OnInit {
   		};
 
   		this.serviceReviews.addReviewAlbum(body, 'addrecensionialbum.php').subscribe(data => {
-  			//this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
         console.log('OK');
         this.location.back();
   		});
@@ -94,7 +91,6 @@ export class AddreviewPage implements OnInit {
   		};
 
   		this.serviceReviews.addReviewBrano(body, 'addrecensionibrano.php').subscribe(data => {
-        //this.router.navigate(['/customer']);  Se riusciamo ad implementare il back button, tornare alla pagina precedente
         console.log('OK');
         this.location.back();
   		});

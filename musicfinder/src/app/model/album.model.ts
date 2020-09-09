@@ -8,6 +8,6 @@ genere: string;
 immagine: HTMLImageElement;
 valutazione_media: number;
 descrizione: string;
-//brani: Brano;
+
     
 }

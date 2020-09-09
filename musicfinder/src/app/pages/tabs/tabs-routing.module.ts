@@ -346,10 +346,6 @@ const routes: Routes = [
         loadChildren: () => import('../results/results.module').then(m => m.ResultsPageModule)
       },
       {
-        path: 'filter',
-        loadChildren: () => import('../filter/filter.module').then(m => m.FilterPageModule)
-      },
-      {
         path: 'reviews',
         loadChildren: () => import('../reviews/reviews.module').then(m => m.ReviewsPageModule)
       },

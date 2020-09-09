@@ -12,16 +12,6 @@
   $postjson = json_decode(file_get_contents('php://input'), true);
   $today    = date('Y-m-d');
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
-      $query = mysqli_query($mysqli, "DELETE FROM artisti_preferiti WHERE username='$postjson[username]' AND id_artista='$postjson[id_artista]'");
-
-      if($query) $result = json_encode(array('success'=>true, 'result'=>'success'));
-      else $result = json_encode(array('success'=>false, 'result'=>'error'));
-  
-      echo $result;
-
-  }
 
   if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     

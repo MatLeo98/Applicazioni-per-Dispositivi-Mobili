@@ -33,13 +33,6 @@ export class HomePage implements OnInit {
     this.router.navigate(['/tabs/home/results/search/' + event + '/' + filter]);
   }
 
- /* albums(){
-    this.router.navigateByUrl('/tabs/album');
-  }
-
-  song(){
-    this.router.navigateByUrl('/tabs/song');
-  }*/
 
   Artista(x){
 
