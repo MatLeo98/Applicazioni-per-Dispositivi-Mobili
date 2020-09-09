@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
 import { ArtistaService } from 'src/app/services/artista.service';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -31,7 +32,8 @@ export class ArtistaPage implements OnInit {
   constructor(private router: Router, private postPvdr: PostProvider,
     private actRoute: ActivatedRoute, private storage: Storage,
     private serviceFavourites: FavouritesService,
-    private serviceArtista: ArtistaService
+    private serviceArtista: ArtistaService,
+    private location: Location
     ) { }
 
   ngOnInit() {
@@ -103,6 +105,11 @@ export class ArtistaPage implements OnInit {
       this.delpref();
     }
     
+  }
+
+  back(){
+    this.location.back();
+
   }
 
 
