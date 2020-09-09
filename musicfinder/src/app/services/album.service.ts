@@ -19,35 +19,20 @@ export class AlbumService {
 
   
     getAlbum(file){
-      let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      /*return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
+     
      return this.httpclient.get<[Album]>(this.server + file);
+
     }
 
     searchAlbum(event, file){
-      /*let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
-      return this.httpclient.get<[Album]>(this.server + file + '?event=' + event );
+      
+     return this.httpclient.get<[Album]>(this.server + file + '?event=' + event );
 
     }
 
     getBraniAlbum(id_album, file){
-      /*let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
 
-      return this.httpclient.get<[Brano]>(this.server + file + '?id_album=' + id_album );
+     return this.httpclient.get<[Brano]>(this.server + file + '?id_album=' + id_album );
 
     }
   

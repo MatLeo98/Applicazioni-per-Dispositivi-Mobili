@@ -30,18 +30,6 @@ export class ReviewsPage implements OnInit{
   id: number = 0;
   id_brano: number = 0;
   brani: string;
-  
-  //       constructor(private platform:Platform){
-//       
-  //         this.platform.ready().then(()=>{
-  //           for(var interval =0; interval<20;interval++)
-  //           {
-  //             this.i++;
-  //             this.data.push(this.i.toString());
-  //           }
-  //         })
-//       
-  //       }
 
 constructor(private platform:Platform, 	private router: Router,
   private postPvdr: PostProvider,
@@ -69,37 +57,11 @@ ngOnInit() {
 }
 
 
-
- /* LoadData(event){
-
-    setTimeout(()=>{
-      for(var interval = 0; interval<10;interval++)  // da modificare "10" numero di elementi caricati ad ogni loading
-        {
-          this.i++;
-          this.data.push(this.i.toString());
-        }
-      // this settimeout method is only demo purpose actually you loda data from your database using api
-
-      event.target.complete();
-      if(this.data.length == 1000)
-        {
-          event.target.disable = true;
-        }
-
-    },1000)
-  }*/
-
-
-
   ionViewWillEnter(){
 
   	this.reviews = [];
     this.start = 0;
     
-    /*if(this.id_brano != undefined)
-      this.loadReviewsBrani();
-    if(this.id != undefined)
-      this.loadReview();*/
     if(this.brani != undefined)
       this.loadReviewsBrani();
     else
@@ -107,15 +69,6 @@ ngOnInit() {
       
 
   }
-
-  /*loadData(event:any){
-  	this.start += this.limit;
-  	setTimeout(() =>{
-  	this.loadReview().then(()=>{
-  		event.target.complete();
-  	});
-  	}, 500);
-  }*/
 
   loadReview(){
 

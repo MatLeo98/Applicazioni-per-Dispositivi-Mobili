@@ -38,50 +38,12 @@ export class ResultsPage implements OnInit {
     private serviceSong: SongService,
     ) {
 
-    //this.initializeItems();
 
    }
 
-  /* initializeItems() {
-    this.items = [
-      '1. Thom Yorke',
-      '2. Radiohead',
-      '3. Michael Jackson',
-      '4. Metallica',
-      '5. Simple Minds',
-      '6. Arctic Monkeys',
-      '7. David Bowie',
-      '8. Verdena',
-      '9. White Stripes',
-      '10. Jack White',
-      '11. Interpol',
-      '12. Jimi Hendrix',
-      '13. Aerosmith',
-      '14. The Doors',
-      '15. The Raconteurs'
-    ];
-  }
-
-  getItems(ev) {
-    // Reset items back to all of the items
-    this.initializeItems();
-
-    // set val to the value of the ev target
-    var val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
-  }*/
 
   ngOnInit() {
 
-    /*this.service.getAllArtisti().subscribe(response => {
-      console.log(response);
-    })*/
     this.actRoute.params.subscribe((data: any) =>{
       this.event = data.event;
       this.filter = data.filter;
@@ -138,44 +100,9 @@ export class ResultsPage implements OnInit {
   	}, 500);
   }
 
- /* loadData(event:any){
-  	this.start += this.limit;
-  	setTimeout(() =>{
-  	this.loadAlbums().then(()=>{
-  		event.target.complete();
-  	});
-  	}, 500);
-  }*/
 
-  /*delCustomer(id){
-
-  	let body = {
-  			aksi : 'delete',
-  			customer_id : id
-  		};
-
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
-  			this.ionViewWillEnter();
-  		});
-
-  }*/
 
   loadAlbums(){
-    /*console.log(this.start);
-  	return new Promise(resolve => {
-  		let body = {
-  			aksi : 'getalbum',
-  			limit : this.limit,
-  			start : this.start,
-  		};
-
-  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
-  			for(let album of data.result){
-  				this.items.push(album);
-  			}
-  			resolve(true);
-  		});
-    });*/
     
     this.serviceAlbum.getAlbum('allalbum.php').subscribe(response => {
       this.items = response;
@@ -184,22 +111,6 @@ export class ResultsPage implements OnInit {
 
 
   searchAlbum(){
-    
-  	/*return new Promise(resolve => {
-    
-  		let body = {
-  			//aksi : 'searchalbum',
-        event : this.event,
-      };
-      
-
-  		this.serviceAlbum.searchAlbum(body, 'allalbum.php').subscribe(data => {
-  			for(let customer of data.result){
-  				this.items.push(customer);
-  			}
-  			resolve(true);
-  		});
-    });*/
 
     this.serviceAlbum.searchAlbum(this.event, 'allalbum.php').subscribe(response => {
       this.items = response;
@@ -229,31 +140,12 @@ export class ResultsPage implements OnInit {
     this.router.navigate(['/tabs/artista/' + id_artista + '/' + nome  + '/' + storia + '/' + immart]);
   }
   
-  //SERVICE FUNZIONANTE 
-  
   loadArtisti(){
-    /*return new Promise(resolve => {
-      let body = {
-        aksi : 'getartista',
-        limit : this.limit,
-        start : this.start,
-      };*/
-
-    /*this.service.getAllArtisti().subscribe(response => {
-      console.log(response);
-    })*/
-
+  
     this.serviceArtista.getArtisti('allartisti.php').subscribe(response => {
       this.items = response;
     });
   
-      /*this.service.getArtisti(body, 'allartisti.php').subscribe(data => {
-        for(let artista of data.result){
-          this.items.push(artista);
-        }
-        resolve(true);
-      });*/
-    //});
   }
 
   showBrano(id_brano, id_album, titolo, durata, valutazione_media, descrizione, testo, youtube, genere, titalb, nome, immagine){
@@ -261,20 +153,6 @@ export class ResultsPage implements OnInit {
   }
   
     loadBrani(){
-      /*return new Promise(resolve => {
-        let body = {
-          aksi : 'getbrano',
-          limit : this.limit,
-          start : this.start,
-        };
-  
-        this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
-          for(let brano of data.result){
-            this.items.push(brano);
-          }
-          resolve(true);
-        });
-      });*/
 
       this.serviceSong.getBrani('allbrani.php').subscribe(response => {
         this.items = response;

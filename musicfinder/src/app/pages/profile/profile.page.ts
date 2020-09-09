@@ -41,22 +41,13 @@ export class ProfilePage implements OnInit {
         }
       });
   }
-
-   /* this.storage.get('session_storage').then((res)=>{
-      if(res == null){
-        this.router.navigate(['/tabs/login']);
-      }else{
-        this.router.navigate(['/tabs/favourites']);
-      }
-    });*/
   
-
   settings(){
     this.router.navigateByUrl('/tabs/settings');
   }
 
   gotoArtista(){
-    this.router.navigateByUrl('/tabs/artista'); //cambiare il link
+    this.router.navigateByUrl('/tabs/artista'); 
 
   }
 

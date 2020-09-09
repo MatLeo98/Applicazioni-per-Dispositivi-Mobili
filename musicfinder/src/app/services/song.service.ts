@@ -17,19 +17,15 @@ export class SongService {
 
   
     getBrani(file){
-      let type = "application/json; charset=UTF-8";
-      let headers = new Headers({ 'Content-Type': type });
-      let options = new RequestOptions({ headers: headers });
-  
-      /*return this.http.post(this.server + file, JSON.stringify(body), options)
-      .map(res => res.json());*/
+      
      return this.httpclient.get<[Brano]>(this.server + file);
+
     }
 
     
     searchBrani(event, file){
       
-      return this.httpclient.get<[Brano]>(this.server + file + '?event=' + event);
+     return this.httpclient.get<[Brano]>(this.server + file + '?event=' + event);
       
     }
   
