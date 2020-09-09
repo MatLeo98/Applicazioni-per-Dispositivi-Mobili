@@ -33,28 +33,6 @@
       echo $result;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-	$data = array();
-	
-     $id_artista= $mysqli->real_escape_string($_GET['id_artista']);
-     $username= $mysqli->real_escape_string($_GET['username']);
-
-		 $sql= mysqli_query($mysqli,"SELECT * FROM artisti_preferiti WHERE id_artista='$id_artista' AND username='$username'");
-		 if($sql){
-			 while ($d = $sql->fetch_assoc()){
-				 $data[]=$d;
-			 }
-			 http_response_code(201);
- 
-		 }
-		 else{
-			 http_response_code(500);
-		 }
-		
-		
-	exit (json_encode($data));
-}
 
   
 	  

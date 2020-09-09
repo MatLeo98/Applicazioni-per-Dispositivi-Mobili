@@ -108,42 +108,38 @@ export class FavouritesService {
 
   }
 
-  getStarArtista(username, id_artista, file){
-    /*let type = "application/json; charset=UTF-8";
+  getStarArtista(body, file){
+    let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());*/
-
-    return this.httpclient.get(this.server + file + '?id_artista=' + id_artista + '&username=' + username);
-
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
-  }
-
-  getStarAlbum(username, id_album, file){
-    /*let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());*/
-
-    //return this.httpclient.delete(this.server + file + '?id=' + id);
-    return this.httpclient.get(this.server + file + '?id_album=' + id_album + '&username=' + username);
+    .map(res => res.json());
 
   }
 
-  getStarBrano(username, id_brano, file){
-    /*let type = "application/json; charset=UTF-8";
+  getStarAlbum(body, file){
+    let type = "application/json; charset=UTF-8";
     let headers = new Headers({ 'Content-Type': type });
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());*/
+    .map(res => res.json());
 
-    return this.httpclient.get(this.server + file + '?id_brano=' + id_brano + '&username=' + username);
+    //return this.httpclient.delete(this.server + file + '?id=' + id);
+    //return this.httpclient.get(this.server + file + '?id_album=' + id_album + '&username=' + username);
+
+  }
+
+  getStarBrano(body, file){
+    let type = "application/json; charset=UTF-8";
+    let headers = new Headers({ 'Content-Type': type });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.server + file, JSON.stringify(body), options)
+    .map(res => res.json());
+
+    //return this.httpclient.get(this.server + file + '?id_brano=' + id_brano + '&username=' + username);
 
     //return this.httpclient.delete(this.server + file + '?id=' + id);
   }

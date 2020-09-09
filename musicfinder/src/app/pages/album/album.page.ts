@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
 import { AlbumService } from 'src/app/services/album.service';
+import { Location } from "@angular/common";
 
 
 @Component({
@@ -40,7 +41,8 @@ export class AlbumPage implements OnInit {
   constructor(private router: Router, private postPvdr: PostProvider,
     private actRoute: ActivatedRoute, private storage: Storage,
     private serviceFavourites: FavouritesService,
-    private serviceAlbum: AlbumService
+    private serviceAlbum: AlbumService,
+    private location: Location
     ) {
 
 
@@ -162,17 +164,6 @@ export class AlbumPage implements OnInit {
   }
 
   delpref(){
-      /*console.log(this.username);
-      let body = {
-          aksi : 'delAlbumPref',
-          username: this.username,
-          id_album: this.id_album,
-        };
-  
-        this.serviceFavourites.deleteAlbumPref(body, 'delalbumpref.php').subscribe(data => {
-         // this.ionViewWillEnter();
-         console.log("Preferito Eliminato");
-        });*/
 
         this.serviceFavourites.deleteAlbumPref(this.username, this.id_album, 'delalbumpref.php').subscribe(response => {
           console.log(response);
@@ -187,7 +178,7 @@ export class AlbumPage implements OnInit {
 
   getpref(){
     
-    /*return new Promise(resolve => {
+    return new Promise(resolve => {
   		let body = {
   			aksi : 'getAlbumPref',
   			username: this.username,
@@ -196,7 +187,7 @@ export class AlbumPage implements OnInit {
 
   		this.serviceFavourites.getStarAlbum(body, 'getstaralbum.php').subscribe(data => {
   			for(let customer of data.result){
-          console.log(this.id_album);
+          console.log(customer.id_album, this.id_album);
           if(customer.id_album == this.id_album){ 
              (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
           }
@@ -207,29 +198,8 @@ export class AlbumPage implements OnInit {
   			}
         resolve(true);
         console.log(this.preferiti);
-        /*for(let i=0; i<this.preferiti.length; i++){
-          console.log(this.preferiti);
-          //console.log(pref.id_album);
-          if(this.preferiti[i].id_album == this.id_album){ 
-             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
-          }
-          else{
-            (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
-          }*/
-  		/*});
-    });*/
-
-    this.serviceFavourites.getStarAlbum(this.username, this.id_album, 'getstaralbum.php').subscribe(response => {
-      this.items = response;
-     
-      console.log(response[0].id_album, this.id_album);
-      if(response[0].id_album == this.id_album){ 
-        (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
-     }
-     else{
-       (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
-     }
-    
+        
+  		});
     });
     
   }
@@ -273,6 +243,11 @@ export class AlbumPage implements OnInit {
     }
     
     console.log(this.val_media);
+  }
+
+  back(){
+    this.location.back();
+
   }
   
 

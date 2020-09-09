@@ -171,10 +171,78 @@ const routes: Routes = [
         
  
       },
+
+      
       {
         path: 'news',
         loadChildren: () => import('../news/news.module').then(m => m.NewsPageModule)
       },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+          },
+          {path: ':y/artista/:id_artista/:nome/:storia/:immart',
+                  children: [
+                    {
+                      path: '',
+                      loadChildren: './pages/artista/artista.module#ArtistaPageModule' 
+                    },
+ 
+                    {
+                      path: 'album/:id_album/:id_artista/:titolo/:genere/:anno/:immagine/:valutazione_media/:descrizione/:nome',
+                      children: [
+                  {
+                    path: '',
+                    loadChildren: './pages/album/album.module#AlbumPageModule' 
+                  },
+                  {
+                    path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+                    loadChildren: './pages/song/song.module#SongPageModule'
+                  }
+                ]
+                    },
+ 
+                  ]
+                },
+                { 
+                  path: ':y/album/:id_album/:id_artista/:titolo/:genere/:anno/:immagine/:valutazione_media/:descrizione/:nome',
+                  children: [
+                    {
+                      path: '',
+                      loadChildren: './pages/album/album.module#AlbumPageModule' 
+                    },
+                    {
+                      path: 'song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+                      loadChildren: './pages/song/song.module#SongPageModule'
+                    },
+                    {
+                      path: 'reviews/:id_album',
+                      loadChildren: './pages/reviews/reviews.module#ReviewsPageModule'
+          
+                    },
+                  ] 
+              
+                  },
+          
+                  {
+                    path: ':y/song/:id_brano/:id_album/:titolo/:durata/:valutazione_media/:descrizione/:testo/:youtube/:genere/:titalb/:nome/:immagine',
+                    children: [
+                      {
+                        path: '',
+                        loadChildren: './pages/song/song.module#SongPageModule' 
+                      },
+                      {
+                        path: 'reviews/:brani/:id_brano',
+                        loadChildren: './pages/reviews/reviews.module#ReviewsPageModule'
+                        
+                      },
+                    ]
+                  }
+              ]},
+              
       {
         path: 'favourites',
         children: [

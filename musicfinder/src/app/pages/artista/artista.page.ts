@@ -26,6 +26,7 @@ export class ArtistaPage implements OnInit {
   username: string;
   user_id: number;
   y: number;
+  
 
   
 
@@ -143,7 +144,7 @@ export class ArtistaPage implements OnInit {
 
   getpref(){
     
-   /* return new Promise(resolve => {
+    return new Promise(resolve => {
   		let body = {
   			aksi : 'getArtistaPref',
   			username: this.username,
@@ -162,30 +163,8 @@ export class ArtistaPage implements OnInit {
   				this.preferiti.push(customer);
   			}
         resolve(true);
-        console.log(this.preferiti);
-        /*for(let i=0; i<this.preferiti.length; i++){
-          console.log(this.preferiti);
-          //console.log(pref.id_album);
-          if(this.preferiti[i].id_album == this.id_album){ 
-             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star";
-          }
-          else{
-            (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
-          }*/
-  		/*});
-    });*/
-
-    this.serviceFavourites.getStarArtista(this.username, this.id_artista, 'getstarartista.php').subscribe(response => {
-      this.items = response;
-     console.log(this.items);
-      console.log(response[0].id_artista, this.id_artista);
-      if(response[0].id_artista == this.id_artista){ 
-        (<HTMLInputElement>document.getElementById("stariconartist")).name = "star";
-     }
-     else{
-       (<HTMLInputElement>document.getElementById("stariconartist")).name = "star-outline";
-     }
-    
+        
+  		});
     });
     
   }

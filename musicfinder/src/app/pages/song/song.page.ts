@@ -3,6 +3,7 @@ import { PostProvider } from '../../../providers/post-provider';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Storage } from '@ionic/Storage';
 import { FavouritesService } from 'src/app/services/favourites.service';
+import { Location } from "@angular/common";
 
 
 
@@ -42,7 +43,8 @@ export class SongPage implements OnInit {
 
   constructor(private router: Router, private postPvdr: PostProvider,
     private actRoute: ActivatedRoute, private storage: Storage,
-    private serviceFavourites: FavouritesService) {
+    private serviceFavourites: FavouritesService,
+    private location: Location) {
     
     }
 
@@ -147,7 +149,7 @@ export class SongPage implements OnInit {
 
   getpref(){
     
-   /* return new Promise(resolve => {
+    return new Promise(resolve => {
   		let body = {
   			aksi : 'getBranoPref',
   			username: this.username,
@@ -176,10 +178,10 @@ export class SongPage implements OnInit {
           else{
             (<HTMLInputElement>document.getElementById("stariconalbum")).name = "star-outline";
           }*/
-  	/*	});
-    });*/
+  		});
+    });
 
-    this.serviceFavourites.getStarBrano(this.username, this.id_brano, 'getstarbrano.php').subscribe(response => {
+    /*this.serviceFavourites.getStarBrano(this.username, this.id_brano, 'getstarbrano.php').subscribe(response => {
       this.items = response;
      console.log(this.items);
       console.log(response[0].id_brano, this.id_brano);
@@ -190,7 +192,7 @@ export class SongPage implements OnInit {
        (<HTMLInputElement>document.getElementById("stariconsong")).name = "star-outline";
      }
     
-    });
+    });*/
     
   }
 
@@ -230,6 +232,11 @@ export class SongPage implements OnInit {
      
      console.log(this.val_media);
    }
+
+   back(){
+    this.location.back();
+
+  }
 
  
 
