@@ -57,11 +57,7 @@ export class ArtistaPage implements OnInit {
       this.username = this.anggota.username;
       console.log(res);
 
-      
       this.getpref();
-     
-
-      
     });
    
    

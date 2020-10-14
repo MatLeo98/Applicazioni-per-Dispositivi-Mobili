@@ -14,7 +14,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $id_brano = $mysqli->real_escape_string($_GET['id_brano']);
         $data = array();
-        $sql = mysqli_query($mysqli, "SELECT * FROM recensione_brano WHERE id_brano = '$id_brano'");
+        $sql = mysqli_query($mysqli, "SELECT * FROM recensione_brano, master_user WHERE id_brano = '$id_brano' AND recensione_brano.username = master_user.username");
 
   if($sql){
 
@@ -29,7 +29,8 @@
 			'id_brano' => $row['id_brano'],
 			'titolo' => $row['titolo'],
 			'valutazione' => $row['valutazione'],
-			'testo' => $row['testo']
+      'testo' => $row['testo'],
+      'immagine' => $row['immagine']
 
 		);
 	}

@@ -24,7 +24,7 @@
 			 $sql= mysqli_query($mysqli,"DELETE FROM album_preferiti WHERE id_album='$id' AND username='$username'");
 			 if($sql){
 				$result = 'preferito eliminato';
-				 http_response_code(201);
+				 http_response_code(200);
 	 
 			 }
 			 else{

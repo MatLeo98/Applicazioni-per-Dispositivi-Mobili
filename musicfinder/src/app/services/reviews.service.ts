@@ -30,25 +30,16 @@ export class ReviewsService {
 
   }
 
+
   addReviewAlbum(body, file){
 
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.post<[Recensione_Album]>(this.server + file, body);
 
   }
 
   addReviewBrano(body, file){
 
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.post<[Recensione_Brano]>(this.server + file, body);
 
   }
 

@@ -77,7 +77,7 @@
     <ion-item *ngFor="let review of reviews">
     
       <ion-avatar slot="start">
-        <img src="./assets/avatars/index.png">
+        <img src="./assets/avatars/{{review.immagine.substr(10,100)}}">
         <p style="font-size: x-small; text-align: center;">{{review.username}}</p>
       </ion-avatar>  
       <ion-grid>

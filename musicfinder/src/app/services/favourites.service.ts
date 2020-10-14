@@ -6,6 +6,9 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Artista } from '../model/artista.model';
 import { Album } from '../model/album.model';
 import { Brano } from '../model/brano.model';
+import { Artisti_Preferiti } from '../model/artisti-preferiti.model';
+import { Album_Preferiti } from '../model/album-preferiti.model';
+import { Brani_Preferiti } from '../model/brani-preferiti.model';
 
 
 @Injectable({
@@ -35,30 +38,21 @@ export class FavouritesService {
   }
 
   addArtistaPref(body, file){
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.post<[Artisti_Preferiti]>(this.server + file, body);
+  
   }
 
   addAlbumPref(body, file){
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.post<[Album_Preferiti]>(this.server + file, body);
+  
   }
 
   addBranoPref(body, file){
-    let type = "application/json; charset=UTF-8";
-    let headers = new Headers({ 'Content-Type': type });
-    let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.server + file, JSON.stringify(body), options)
-    .map(res => res.json());
+    return this.httpclient.post<[Brani_Preferiti]>(this.server + file, body);
+  
   }
 
   deleteArtistaPref(username, id, file){

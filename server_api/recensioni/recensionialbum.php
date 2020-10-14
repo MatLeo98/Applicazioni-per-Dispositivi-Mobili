@@ -14,7 +14,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $album_id= $mysqli->real_escape_string($_GET['id']);
         $data = array();
-        $sql = mysqli_query($mysqli, "SELECT * FROM recensione_album WHERE id_album = '$album_id'");
+        $sql = mysqli_query($mysqli, "SELECT * FROM recensione_album, master_user WHERE id_album = '$album_id' AND recensione_album.username = master_user.username");
 
     if($sql){
 
@@ -30,6 +30,7 @@
             'valutazione' => $row['valutazione'],
             'username' => $row['username'],
             'id_album' => $row['id_album'],
+            'immagine' => $row['immagine']
 
 		);
 	}

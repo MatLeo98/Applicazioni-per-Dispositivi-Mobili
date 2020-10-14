@@ -62,7 +62,7 @@ export class RegisterPage implements OnInit {
         duration: 3000
       });
       toast.present();
-    }else if(this.email==""){
+    }else if(this.username==""){
       const toast = await this.toastCtrl.create({
         message: 'Username is required',
         duration: 3000
